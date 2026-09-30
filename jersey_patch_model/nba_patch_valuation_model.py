@@ -489,3 +489,50 @@ rate it's built on. It's still a directional model, not a pricing tool --
 present the dollar figures as "the model's best estimate given a real but
 small and imperfect reference set," with the caveats above attached.
 """)
+
+
+# ---------------------------------------------------------------------------
+# Step 9: Compact copy-paste summary (plain text / markdown)
+# ---------------------------------------------------------------------------
+section("STEP 9 - Copy-paste summary")
+
+def money(v):
+    return f"${v:,.0f}"
+
+summary_lines = []
+summary_lines.append("## NBA Jersey Patch Valuation - Summary\n")
+
+summary_lines.append("**Regression** (fit on 2026-equivalent $; calibration blends current-deal "
+                      "and time-adjusted historical prices -- see Step 2 for why year isn't a "
+                      "direct regression feature):")
+summary_lines.append(f"- Value(2026-equiv) = {intercept:,.0f} + {slope:.4f} x Exposure_Value_Zoomph")
+summary_lines.append(f"- R² = {r2:.3f}  |  n = {len(calib)} calibration points "
+                      f"({len(current_real)} current + {len(hist_real)} historical, de-duplicated)")
+summary_lines.append(f"- Growth rate used to time-adjust historical prices to {CURRENT_YEAR}-equivalent "
+                      f"$: {GROWTH_RATE:.1%}/yr (from Lakers + Warriors trajectories)\n")
+
+summary_lines.append("**Market-size tiers**\n")
+summary_lines.append("| Tier | Teams | Avg Value | Median Value |")
+summary_lines.append("|---|---|---|---|")
+for tier_name, row in tier_summary.iterrows():
+    summary_lines.append(f"| {tier_name} | {int(row['Teams'])} | {money(row['Avg_Value'])} | {money(row['Median_Value'])} |")
+summary_lines.append("")
+
+summary_lines.append(f"**All 30 teams, sorted by value descending** (value is real price where "
+                      f"confirmed, else the model's {CURRENT_YEAR}-equivalent estimate):\n")
+summary_lines.append("| Team | Value ($) | Confidence | Tier |")
+summary_lines.append("|---|---|---|---|")
+confidence_label = {"Real (Confirmed)": "Real", "Estimated (Model)": "Estimated"}
+team_table = master[["Team", "Final_Annual_Value", "Value_Source", "Market_Tier"]].sort_values(
+    "Final_Annual_Value", ascending=False
+)
+for _, row in team_table.iterrows():
+    conf = confidence_label[row["Value_Source"]]
+    summary_lines.append(f"| {row['Team']} | {money(row['Final_Annual_Value'])} | {conf} | {row['Market_Tier']} |")
+
+summary_text = "\n".join(summary_lines)
+print(summary_text)
+
+with open("nba_patch_summary.md", "w") as f:
+    f.write(summary_text + "\n")
+print("\n(Saved the same block to nba_patch_summary.md)")
