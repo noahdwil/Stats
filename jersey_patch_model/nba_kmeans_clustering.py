@@ -48,7 +48,8 @@ LOGO_FILES = {
     "Indiana Pacers": "nba-indiana-pacers-logo-480x480.png",
     "Washington Wizards": "nba-washington-wizards-logo-480x480.png",
 }
-TARGET_LOGO_PX = 30  # on-canvas diameter at the figure's dpi, regardless of source resolution
+TARGET_LOGO_PX = 22  # on-canvas diameter at the figure's dpi, regardless of source resolution
+DISC_PX = 30          # solid cluster-color disc drawn behind each logo (> logo so it rings visibly)
 
 # ---------------------------------------------------------------------------
 # Data: team -> (win_pct, all_star_count, impressions_millions, followers_millions, national_tv_games)
@@ -129,33 +130,73 @@ df["cluster"] = kmeans.fit_predict(X)
 # ---------------------------------------------------------------------------
 # Plot
 # ---------------------------------------------------------------------------
-HIGHLIGHT_TEAMS = [
-    "Oklahoma City Thunder", "New York Knicks", "LA Lakers",
-    "Golden State Warriors", "San Antonio Spurs", "Chicago Bulls",
-]
-HIGHLIGHT_LABELS = {
-    "Oklahoma City Thunder": "OKC Thunder",
-    "New York Knicks": "New York Knicks",
-    "LA Lakers": "LA Lakers",
-    "Golden State Warriors": "Golden State Warriors",
-    "San Antonio Spurs": "San Antonio Spurs",
-    "Chicago Bulls": "Chicago Bulls",
-}
-
 fig, ax = plt.subplots(figsize=(14, 9), dpi=200, facecolor="white")
 ax.set_facecolor("white")
 
 cluster_colors = plt.get_cmap("tab10", CHOSEN_K)
 
-# Cluster-colored ring behind each point -- doubles as the legend swatch and
-# as the cluster-identity cue once logos sit on top of the plain dots.
+# Fix the axis limits up front so the data<->pixel conversion used for
+# overlap-avoidance below stays correct once we start placing artists.
+x_pad, y_pad = 0.6, 0.6
+ax.set_xlim(df["team_strength"].min() - x_pad, df["team_strength"].max() + x_pad)
+ax.set_ylim(df["exposure"].min() - y_pad, df["exposure"].max() + y_pad)
+fig.subplots_adjust(top=0.85, bottom=0.09, left=0.08, right=0.97)
+
+# ---------------------------------------------------------------------------
+# Overlap avoidance: nudge any logos sitting closer than DISC_PX apart (in
+# on-canvas pixels) away from each other, so close/identical points are both
+# still visible. True data positions are untouched -- only where each logo
+# is DRAWN shifts, and a thin leader line marks any real nudge.
+# ---------------------------------------------------------------------------
+teams = df.index.tolist()
+true_px = ax.transData.transform(df[["team_strength", "exposure"]].values).astype(float)
+plot_px = true_px.copy()
+rng = np.random.default_rng(42)
+
+for _ in range(300):
+    moved = False
+    for i in range(len(teams)):
+        for j in range(i + 1, len(teams)):
+            dx = plot_px[j, 0] - plot_px[i, 0]
+            dy = plot_px[j, 1] - plot_px[i, 1]
+            dist = np.hypot(dx, dy)
+            if dist < 1e-6:
+                angle = rng.uniform(0, 2 * np.pi)
+                dx, dy, dist = np.cos(angle), np.sin(angle), 1.0
+            if dist < DISC_PX:
+                push = (DISC_PX - dist) / 2
+                ux, uy = dx / dist, dy / dist
+                plot_px[i] -= [ux * push, uy * push]
+                plot_px[j] += [ux * push, uy * push]
+                moved = True
+    if not moved:
+        break
+
+plot_data = ax.transData.inverted().transform(plot_px)
+df["plot_x"] = plot_data[:, 0]
+df["plot_y"] = plot_data[:, 1]
+nudged = np.hypot(plot_px[:, 0] - true_px[:, 0], plot_px[:, 1] - true_px[:, 1]) > 2
+
+# Leader lines for any team whose logo had to move to avoid overlap
+for team, was_nudged in zip(teams, nudged):
+    if was_nudged:
+        row = df.loc[team]
+        ax.plot([row["team_strength"], row["plot_x"]], [row["exposure"], row["plot_y"]],
+                color="#898781", linewidth=0.6, linestyle="-", alpha=0.7, zorder=2)
+
+if nudged.any():
+    print(f"\nNudged {int(nudged.sum())} overlapping logo(s) to stay visible "
+          f"(thin leader line marks the true position): {', '.join(np.array(teams)[nudged])}")
+
+# Solid cluster-color disc behind each logo -- a filled disc reads far more
+# clearly than a thin ring, especially once points start crowding together.
 for cluster_id in range(CHOSEN_K):
     sub = df[df["cluster"] == cluster_id]
-    ax.scatter(sub["team_strength"], sub["exposure"],
-               s=230, facecolor="white", edgecolor=cluster_colors(cluster_id),
-               linewidth=2.0, label=f"Cluster {cluster_id} (n={len(sub)})", zorder=3)
+    ax.scatter(sub["plot_x"], sub["plot_y"],
+               s=DISC_PX ** 2 * np.pi / 4, color=cluster_colors(cluster_id),
+               edgecolor="white", linewidth=1.2, zorder=3)
 
-# Team logo on top of each ring; falls back to a plain colored dot if a
+# Team logo on top of each disc; falls back to a plain colored dot if a
 # team's logo file isn't found in LOGO_DIR.
 missing_logos = []
 for team, row in df.iterrows():
@@ -166,38 +207,24 @@ for team, row in df.iterrows():
         img_width_px = img.shape[1]
         zoom = TARGET_LOGO_PX / img_width_px
         imagebox = OffsetImage(img, zoom=zoom)
-        ab = AnnotationBbox(imagebox, (row["team_strength"], row["exposure"]),
+        ab = AnnotationBbox(imagebox, (row["plot_x"], row["plot_y"]),
                              frameon=False, pad=0, zorder=4)
         ax.add_artist(ab)
     else:
         missing_logos.append(team)
-        ax.scatter(row["team_strength"], row["exposure"],
-                   s=110, color=cluster_colors(row["cluster"]), edgecolor="white",
-                   linewidth=0.8, zorder=4)
 
 if missing_logos:
-    print(f"No logo file found for {len(missing_logos)} team(s), drew a plain dot instead: "
+    print(f"No logo file found for {len(missing_logos)} team(s), left as a plain colored disc: "
           f"{', '.join(missing_logos)}")
 
-# Bold label for the named teams (no ring). Offsets are tuned to clear the
-# ~38px logo's own footprint plus its nearest neighbors (Spurs/Thunder/Knicks
-# sit close together on the right edge; Bulls' label needs to clear its own
-# wordmark-heavy logo).
-label_offsets = {
-    "Oklahoma City Thunder": (0, -28),
-    "New York Knicks": (26, -14),
-    "LA Lakers": (-28, 14),
-    "Golden State Warriors": (26, -14),
-    "San Antonio Spurs": (-26, 18),
-    "Chicago Bulls": (26, 18),
-}
-for team in HIGHLIGHT_TEAMS:
-    row = df.loc[team]
-    dx, dy = label_offsets[team]
-    ha = "center" if dx == 0 else ("left" if dx > 0 else "right")
-    ax.annotate(HIGHLIGHT_LABELS[team], (row["team_strength"], row["exposure"]),
-                textcoords="offset points", xytext=(dx, dy), ha=ha,
-                fontsize=10.5, fontweight="bold", color="#0b0b0b", zorder=5)
+# Legend: proxy markers, since cluster color now lives on per-point discs
+# rather than one labeled scatter call per cluster.
+legend_handles = [
+    plt.Line2D([0], [0], marker="o", linestyle="None", markersize=10,
+               markerfacecolor=cluster_colors(cid), markeredgecolor="white",
+               label=f"Cluster {cid} (n={(df['cluster'] == cid).sum()})")
+    for cid in range(CHOSEN_K)
+]
 
 ax.axhline(0, color="#898781", linewidth=0.9, zorder=1)
 ax.axvline(0, color="#898781", linewidth=0.9, zorder=1)
@@ -211,9 +238,8 @@ ax.tick_params(colors="#52514e")
 
 ax.set_xlabel("Team Strength Index (win% + All-Star count)", fontsize=11.5, color="#0b0b0b")
 ax.set_ylabel("Exposure Index (impressions + followers + national TV games)", fontsize=11.5, color="#0b0b0b")
-ax.legend(frameon=False, loc="upper left", fontsize=10)
+ax.legend(handles=legend_handles, frameon=False, loc="upper left", fontsize=10)
 
-fig.subplots_adjust(top=0.85, bottom=0.09, left=0.08, right=0.97)
 fig.text(0.08, 0.97, "NBA Patch Value — K-Means Team Clusters",
           fontsize=19, fontweight="bold", color="#0b0b0b", va="top")
 fig.text(0.08, 0.905,
