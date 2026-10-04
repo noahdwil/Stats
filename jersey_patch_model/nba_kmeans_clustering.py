@@ -6,11 +6,49 @@ Team Strength = z-score(win%) + z-score(All-Star count)
 Exposure      = z-score(social impressions) + z-score(total followers) + z-score(national TV games)
 """
 
+import os
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
+
+LOGO_DIR = "logos"
+LOGO_FILES = {
+    "Oklahoma City Thunder": "nba-oklahoma-city-thunder-logo-480x480.png",
+    "San Antonio Spurs": "nba-san-antonio-spurs-logo-480x480.png",
+    "Detroit Pistons": "nba-detroit-pistons-logo-480x480.png",
+    "Boston Celtics": "nba-boston-celtics-logo-480x480.png",
+    "Denver Nuggets": "nba-denver-nuggets-logo-2018-480x480.png",
+    "LA Lakers": "nba-los-angeles-lakers-logo-480x480.png",
+    "New York Knicks": "nba-new-york-knicks-logo-480x480.png",
+    "Cleveland Cavaliers": "Clevelan-Cavaliers-logo-2022-480x480.png",
+    "Houston Rockets": "nba-houston-rockets-logo-2020-300x300.png",
+    "Minnesota Timberwolves": "nba-minnesota-timberwolves-logo-480x480.png",
+    "Atlanta Hawks": "nba-atlanta-hawks-logo-480x480.png",
+    "Toronto Raptors": "nba-toronto-raptors-logo-2020-480x480.png",
+    "Philadelphia 76ers": "nba-philadelphia-76ers-logo-480x480.png",
+    "Orlando Magic": "Orlando-Magic-logo-2025-480x480.png",
+    "Phoenix Suns": "nba-phoenix-suns-logo-480x480.png",
+    "Charlotte Hornets": "nba-charlotte-hornets-logo-480x480.png",
+    "Miami Heat": "nba-miami-heat-logo-480x480.png",
+    "Portland Trail Blazers": "nba-portland-trail-blazers-logo-480x480.png",
+    "LA Clippers": "NBA-LA-Clippers-logo-2024-480x480.png",
+    "Golden State Warriors": "nba-golden-state-warriors-logo-2020-480x480.png",
+    "Milwaukee Bucks": "nba-milwaukee-bucks-logo-480x480.png",
+    "Chicago Bulls": "nba-chicago-bulls-logo-480x480.png",
+    "New Orleans Pelicans": "nba-new-orleans-pelicans-logo-480x480.png",
+    "Dallas Mavericks": "nba-dallas-mavericks-logo-480x480.png",
+    "Memphis Grizzlies": "nba-memphis-grizzlies-logo-480x480.png",
+    "Sacramento Kings": "nba-sacramento-kings-logo-480x480.png",
+    "Utah Jazz": "utah-jazz-logo-2022-480x480.png",
+    "Brooklyn Nets": "nba-brooklyn-nets-logo-480x480.png",
+    "Indiana Pacers": "nba-indiana-pacers-logo-480x480.png",
+    "Washington Wizards": "nba-washington-wizards-logo-480x480.png",
+}
+TARGET_LOGO_PX = 30  # on-canvas diameter at the figure's dpi, regardless of source resolution
 
 # ---------------------------------------------------------------------------
 # Data: team -> (win_pct, all_star_count, impressions_millions, followers_millions, national_tv_games)
@@ -109,25 +147,54 @@ ax.set_facecolor("white")
 
 cluster_colors = plt.get_cmap("tab10", CHOSEN_K)
 
+# Cluster-colored ring behind each point -- doubles as the legend swatch and
+# as the cluster-identity cue once logos sit on top of the plain dots.
 for cluster_id in range(CHOSEN_K):
     sub = df[df["cluster"] == cluster_id]
     ax.scatter(sub["team_strength"], sub["exposure"],
-               s=110, color=cluster_colors(cluster_id), edgecolor="white",
-               linewidth=0.8, alpha=0.9, label=f"Cluster {cluster_id} (n={len(sub)})", zorder=3)
+               s=230, facecolor="white", edgecolor=cluster_colors(cluster_id),
+               linewidth=2.0, label=f"Cluster {cluster_id} (n={len(sub)})", zorder=3)
 
-# Bold label for the named teams (no ring)
+# Team logo on top of each ring; falls back to a plain colored dot if a
+# team's logo file isn't found in LOGO_DIR.
+missing_logos = []
+for team, row in df.iterrows():
+    logo_filename = LOGO_FILES.get(team)
+    logo_path = os.path.join(LOGO_DIR, logo_filename) if logo_filename else None
+    if logo_path and os.path.exists(logo_path):
+        img = plt.imread(logo_path)
+        img_width_px = img.shape[1]
+        zoom = TARGET_LOGO_PX / img_width_px
+        imagebox = OffsetImage(img, zoom=zoom)
+        ab = AnnotationBbox(imagebox, (row["team_strength"], row["exposure"]),
+                             frameon=False, pad=0, zorder=4)
+        ax.add_artist(ab)
+    else:
+        missing_logos.append(team)
+        ax.scatter(row["team_strength"], row["exposure"],
+                   s=110, color=cluster_colors(row["cluster"]), edgecolor="white",
+                   linewidth=0.8, zorder=4)
+
+if missing_logos:
+    print(f"No logo file found for {len(missing_logos)} team(s), drew a plain dot instead: "
+          f"{', '.join(missing_logos)}")
+
+# Bold label for the named teams (no ring). Offsets are tuned to clear the
+# ~38px logo's own footprint plus its nearest neighbors (Spurs/Thunder/Knicks
+# sit close together on the right edge; Bulls' label needs to clear its own
+# wordmark-heavy logo).
 label_offsets = {
-    "Oklahoma City Thunder": (-14, -16),
-    "New York Knicks": (10, -16),
-    "LA Lakers": (-14, 10),
-    "Golden State Warriors": (10, -16),
-    "San Antonio Spurs": (-12, 14),
-    "Chicago Bulls": (10, 10),
+    "Oklahoma City Thunder": (0, -28),
+    "New York Knicks": (26, -14),
+    "LA Lakers": (-28, 14),
+    "Golden State Warriors": (26, -14),
+    "San Antonio Spurs": (-26, 18),
+    "Chicago Bulls": (26, 18),
 }
 for team in HIGHLIGHT_TEAMS:
     row = df.loc[team]
     dx, dy = label_offsets[team]
-    ha = "left" if dx > 0 else "right"
+    ha = "center" if dx == 0 else ("left" if dx > 0 else "right")
     ax.annotate(HIGHLIGHT_LABELS[team], (row["team_strength"], row["exposure"]),
                 textcoords="offset points", xytext=(dx, dy), ha=ha,
                 fontsize=10.5, fontweight="bold", color="#0b0b0b", zorder=5)
