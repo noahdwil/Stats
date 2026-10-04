@@ -48,8 +48,16 @@ LOGO_FILES = {
     "Indiana Pacers": "nba-indiana-pacers-logo-480x480.png",
     "Washington Wizards": "nba-washington-wizards-logo-480x480.png",
 }
-TARGET_LOGO_PX = 22  # on-canvas diameter at the figure's dpi, regardless of source resolution
-DISC_PX = 30          # solid cluster-color disc drawn behind each logo (> logo so it rings visibly)
+DPI = 200
+TARGET_LOGO_PX = 55  # on-canvas diameter in actual screen pixels, regardless of source resolution
+DISC_PX = 75          # solid cluster-color disc drawn behind each logo (> logo so it rings visibly)
+
+def px_to_pt(px):
+    """Convert a target size in on-canvas pixels (at DPI) to the points unit
+    that OffsetImage's zoom and scatter's s both actually use internally --
+    1 point = DPI/72 pixels, so a naive pixel value fed straight into either
+    API renders ~2.8x too big at DPI=200."""
+    return px * 72 / DPI
 
 # ---------------------------------------------------------------------------
 # Data: team -> (win_pct, all_star_count, impressions_millions, followers_millions, national_tv_games)
@@ -130,7 +138,7 @@ df["cluster"] = kmeans.fit_predict(X)
 # ---------------------------------------------------------------------------
 # Plot
 # ---------------------------------------------------------------------------
-fig, ax = plt.subplots(figsize=(14, 9), dpi=200, facecolor="white")
+fig, ax = plt.subplots(figsize=(14, 9), dpi=DPI, facecolor="white")
 ax.set_facecolor("white")
 
 cluster_colors = plt.get_cmap("tab10", CHOSEN_K)
@@ -143,28 +151,67 @@ ax.set_ylim(df["exposure"].min() - y_pad, df["exposure"].max() + y_pad)
 fig.subplots_adjust(top=0.85, bottom=0.09, left=0.08, right=0.97)
 
 # ---------------------------------------------------------------------------
-# Overlap avoidance: nudge any logos sitting closer than DISC_PX apart (in
-# on-canvas pixels) away from each other, so close/identical points are both
-# still visible. True data positions are untouched -- only where each logo
-# is DRAWN shifts, and a thin leader line marks any real nudge.
+# Overlap avoidance: any logos within SEPARATION_PX of each other get grouped
+# (union-find over the proximity graph, so chains of close points merge into
+# one group) and arranged on a small circle around their shared centroid,
+# radius chosen so adjacent members are guaranteed SEPARATION_PX apart no
+# matter how many pile into one group. A pairwise relaxation cleanup pass
+# then resolves any remaining cross-group close calls. True data positions
+# are untouched -- only where each logo is DRAWN shifts, and a thin leader
+# line marks any real nudge.
 # ---------------------------------------------------------------------------
-teams = df.index.tolist()
-true_px = ax.transData.transform(df[["team_strength", "exposure"]].values).astype(float)
-plot_px = true_px.copy()
-rng = np.random.default_rng(42)
+SEPARATION_PX = 85  # center-to-center spacing target (> DISC_PX so discs don't just kiss edges)
 
+teams = df.index.tolist()
+n = len(teams)
+true_px = ax.transData.transform(df[["team_strength", "exposure"]].values).astype(float)
+
+parent = list(range(n))
+
+def find(i):
+    while parent[i] != i:
+        parent[i] = parent[parent[i]]
+        i = parent[i]
+    return i
+
+def union(i, j):
+    ri, rj = find(i), find(j)
+    if ri != rj:
+        parent[ri] = rj
+
+for i in range(n):
+    for j in range(i + 1, n):
+        if np.hypot(*(true_px[i] - true_px[j])) < SEPARATION_PX:
+            union(i, j)
+
+groups = {}
+for i in range(n):
+    groups.setdefault(find(i), []).append(i)
+
+plot_px = true_px.copy()
+for members in groups.values():
+    if len(members) == 1:
+        continue
+    centroid = true_px[members].mean(axis=0)
+    radius = SEPARATION_PX / (2 * np.sin(np.pi / len(members))) if len(members) > 1 else 0
+    for k, idx in enumerate(members):
+        angle = 2 * np.pi * k / len(members) + np.pi / 2  # first point straight up, then clockwise
+        plot_px[idx] = centroid + radius * np.array([np.cos(angle), np.sin(angle)])
+
+# Cleanup pass: resolve any remaining close calls between different groups
+rng = np.random.default_rng(42)
 for _ in range(300):
     moved = False
-    for i in range(len(teams)):
-        for j in range(i + 1, len(teams)):
+    for i in range(n):
+        for j in range(i + 1, n):
             dx = plot_px[j, 0] - plot_px[i, 0]
             dy = plot_px[j, 1] - plot_px[i, 1]
             dist = np.hypot(dx, dy)
             if dist < 1e-6:
                 angle = rng.uniform(0, 2 * np.pi)
                 dx, dy, dist = np.cos(angle), np.sin(angle), 1.0
-            if dist < DISC_PX:
-                push = (DISC_PX - dist) / 2
+            if dist < SEPARATION_PX:
+                push = (SEPARATION_PX - dist) / 2
                 ux, uy = dx / dist, dy / dist
                 plot_px[i] -= [ux * push, uy * push]
                 plot_px[j] += [ux * push, uy * push]
@@ -193,7 +240,7 @@ if nudged.any():
 for cluster_id in range(CHOSEN_K):
     sub = df[df["cluster"] == cluster_id]
     ax.scatter(sub["plot_x"], sub["plot_y"],
-               s=DISC_PX ** 2 * np.pi / 4, color=cluster_colors(cluster_id),
+               s=px_to_pt(DISC_PX) ** 2, color=cluster_colors(cluster_id),
                edgecolor="white", linewidth=1.2, zorder=3)
 
 # Team logo on top of each disc; falls back to a plain colored dot if a
@@ -205,7 +252,7 @@ for team, row in df.iterrows():
     if logo_path and os.path.exists(logo_path):
         img = plt.imread(logo_path)
         img_width_px = img.shape[1]
-        zoom = TARGET_LOGO_PX / img_width_px
+        zoom = px_to_pt(TARGET_LOGO_PX) / img_width_px
         imagebox = OffsetImage(img, zoom=zoom)
         ab = AnnotationBbox(imagebox, (row["plot_x"], row["plot_y"]),
                              frameon=False, pad=0, zorder=4)
