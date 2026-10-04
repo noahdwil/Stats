@@ -77,11 +77,13 @@ for k in range(2, 7):
     silhouettes[k] = silhouette_score(X, km.labels_)
     print(f"{k} | {inertias[k]:9.3f} | {silhouettes[k]:9.3f}")
 
-# k=3: highest silhouette score (0.530) of k=2..6, AND the elbow's largest
-# marginal inertia drop (136.5 -> 71.9, a 47% cut) happens going from k=2 to
-# k=3, with each k beyond that shaving off a much smaller, diminishing slice.
-CHOSEN_K = max(silhouettes, key=silhouettes.get)
-print(f"\nChosen k = {CHOSEN_K} (best silhouette score; also sits at the elbow's steepest inertia drop)")
+# Best silhouette score (0.530) and the elbow's steepest inertia drop
+# (136.5 -> 71.9) both point to k=3 -- but k=4 is set explicitly below per
+# request, trading a bit of fit quality (silhouette 0.479 vs 0.530) for a
+# finer-grained split.
+CHOSEN_K = 4
+print(f"\nChosen k = {CHOSEN_K} (set explicitly; best silhouette score was k=3 at 0.530, "
+      f"k={CHOSEN_K}'s silhouette is {silhouettes[CHOSEN_K]:.3f})")
 
 kmeans = KMeans(n_clusters=CHOSEN_K, n_init=20, random_state=42)
 df["cluster"] = kmeans.fit_predict(X)
@@ -113,7 +115,7 @@ for cluster_id in range(CHOSEN_K):
                s=110, color=cluster_colors(cluster_id), edgecolor="white",
                linewidth=0.8, alpha=0.9, label=f"Cluster {cluster_id} (n={len(sub)})", zorder=3)
 
-# Gold ring highlight + bold label for the named teams
+# Bold label for the named teams (no ring)
 label_offsets = {
     "Oklahoma City Thunder": (-14, -16),
     "New York Knicks": (10, -16),
@@ -124,8 +126,6 @@ label_offsets = {
 }
 for team in HIGHLIGHT_TEAMS:
     row = df.loc[team]
-    ax.scatter(row["team_strength"], row["exposure"],
-               s=260, facecolor="none", edgecolor="#d4af37", linewidth=2.2, zorder=4)
     dx, dy = label_offsets[team]
     ha = "left" if dx > 0 else "right"
     ax.annotate(HIGHLIGHT_LABELS[team], (row["team_strength"], row["exposure"]),
