@@ -1,0 +1,7 @@
+City,Exposure scenario,Exposure assumption ($),0.196x valuation ($),Observed-median valuation ($),0.64x valuation ($)
+Seattle,Low (P25),13625000.0,2670500.0,4155625.0,8720000.0
+Seattle,Typical (P50),21000000.0,4116000.0,6405000.0,13440000.0
+Seattle,High (P75),29825000.0,5845700.0,9096625.0,19088000.0
+Las Vegas,Low (P25),13625000.0,2670500.0,4155625.0,8720000.0
+Las Vegas,Typical (P50),21000000.0,4116000.0,6405000.0,13440000.0
+Las Vegas,High (P75),29825000.0,5845700.0,9096625.0,19088000.0
