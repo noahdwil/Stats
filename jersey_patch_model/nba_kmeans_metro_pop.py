@@ -302,6 +302,11 @@ any_changed = False
 for team, old_c, new_c in changed:
     marker = ""
     print(f"  {team}: {old_c}")
+
+# Closest-matching old cluster per new cluster (computed once, reused below
+# and for the chart legend, which uses these familiar titles per request
+# instead of the data-driven rank descriptors from Step 3).
+closest_old_cluster = {}
 for cid in sorted(df["cluster"].unique()):
     new_members = set(df[df["cluster"] == cid].index)
     best_old, best_overlap = None, -1
@@ -309,6 +314,7 @@ for cid in sorted(df["cluster"].unique()):
         overlap = len(new_members & set(old_members))
         if overlap > best_overlap:
             best_overlap, best_old = overlap, old_name
+    closest_old_cluster[cid] = best_old
     print(f"\nNew Cluster {cid} (\"{cluster_names[cid]}\", n={len(new_members)}) most resembles "
           f"old cluster \"{best_old}\" ({best_overlap}/{len(new_members)} members overlap)")
 
@@ -316,11 +322,7 @@ print("\nTeams that changed cluster membership (old grouping name vs. nearest-ma
 moved_any = False
 for cid in sorted(df["cluster"].unique()):
     new_members = set(df[df["cluster"] == cid].index)
-    best_old, best_overlap = None, -1
-    for old_name, old_members in PREVIOUS_CLUSTERS.items():
-        overlap = len(new_members & set(old_members))
-        if overlap > best_overlap:
-            best_overlap, best_old = overlap, old_name
+    best_old = closest_old_cluster[cid]
     moved = new_members - set(PREVIOUS_CLUSTERS[best_old])
     for team in sorted(moved):
         print(f"  {team}: was in \"{old_assignment.get(team)}\", now in Cluster {cid} "
@@ -491,7 +493,7 @@ for cid in range(CHOSEN_K):
     sub = df[df["cluster"] == cid]
     ax.scatter(sub["plot_x"], sub["plot_y"], s=px_to_pt(DISC_PX) ** 2, color=cluster_colors(cid),
                edgecolor="white", linewidth=1.2,
-               label=f"Cluster {cid}: {cluster_names[cid]} (n={len(sub)})", zorder=3)
+               label=f"{closest_old_cluster[cid]} (n={len(sub)})", zorder=3)
 
 missing_logos = []
 for team, row in df.iterrows():
