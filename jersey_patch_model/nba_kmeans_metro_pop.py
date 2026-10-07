@@ -41,10 +41,12 @@ def section(title):
 #   Warriors             -> San Francisco-Oakland-Fremont CBSA
 #   Mavericks             -> Dallas-Fort Worth-Arlington CBSA
 #   Wizards               -> Washington-Arlington-Alexandria CBSA
-# Toronto Raptors: LEFT AS None ON PURPOSE. The attached CSV is US metro
-# areas only (CBSA = US Census Core-Based Statistical Area) and has no
-# Toronto entry -- there is nothing to look up. Per instruction, this must
-# fail loudly rather than be invented or silently dropped.
+# Toronto Raptors: not in the attached US-only CBSA CSV (confirmed absent).
+# User-specified source: macrotrends.net/global-metrics/cities/20402/toronto/population
+# -> 6,491,000 (2025 estimate). Note this uses a different metro-area
+# definition than the US Census CBSA figures used for the other 29 teams
+# (Macrotrends' 2025 Toronto figure is ~6.49M; Statistics Canada's official
+# CMA figure is ~7.1M for the same year) -- flagged, not silently reconciled.
 # ---------------------------------------------------------------------------
 data = {
     "OKC Thunder":            (0.780, 2, 1080, 34, 1.512813),
@@ -58,7 +60,7 @@ data = {
     "Houston Rockets":        (0.634, 2, 1300, 28, 7.904627),
     "Minnesota Timberwolves": (0.598, 1, 1250, 28, 3.790295),
     "Atlanta Hawks":          (0.561, 1, 509,  13, 6.482182),
-    "Toronto Raptors":        (0.561, 1, 459,  2,  None),
+    "Toronto Raptors":        (0.561, 1, 459,  2,  6.491),
     "Philadelphia 76ers":     (0.549, 1, 542,  14, 6.329118),
     "Orlando Magic":          (0.549, 0, 548,  14, 2.957672),
     "Phoenix Suns":           (0.549, 1, 864,  9,  5.228938),
@@ -348,7 +350,7 @@ for cid in range(CHOSEN_K):
 
 texts = []
 short_names = {
-    "Oklahoma City Thunder": "OKC", "San Antonio Spurs": "SAS", "Detroit Pistons": "DET",
+    "OKC Thunder": "OKC", "San Antonio Spurs": "SAS", "Detroit Pistons": "DET",
     "Boston Celtics": "BOS", "Denver Nuggets": "DEN", "LA Lakers": "LAL", "New York Knicks": "NYK",
     "Cleveland Cavaliers": "CLE", "Houston Rockets": "HOU", "Minnesota Timberwolves": "MIN",
     "Atlanta Hawks": "ATL", "Toronto Raptors": "TOR", "Philadelphia 76ers": "PHI", "Orlando Magic": "ORL",
