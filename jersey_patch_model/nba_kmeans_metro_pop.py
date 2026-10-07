@@ -1,8 +1,10 @@
 """
 NBA jersey patch valuation - K-means clustering v2: metro population swapped
-in for total followers in the Exposure composite.
+in for total followers in the Exposure composite, and win_pct now averaged
+over the last 3 seasons (2023-24, 2024-25, 2025-26) instead of a single
+season.
 
-Team Strength = z(win_pct) + z(all_star_count)
+Team Strength = z(win_pct_3yr_avg) + z(all_star_count)
 Exposure      = z(impressions_millions) + z(metro_pop_millions) + z(national_tv_games)
 """
 
@@ -111,6 +113,39 @@ data = {
     "Washington Wizards":     (0.207, 0, 208,  2,  6.465724),
 }
 
+# ---------------------------------------------------------------------------
+# 3-season win% averaging. win_pct in `data` above is the single-season
+# 2025-26 figure already used in this project; 2023-24 and 2024-25 win-loss
+# records are transcribed from the attached NBA.com Conference Standings
+# pages. All three are averaged below to replace the single-season figure
+# as the Team Strength input, per request.
+# ---------------------------------------------------------------------------
+WIN_LOSS_2023_24 = {
+    "Boston Celtics": (64, 18), "New York Knicks": (50, 32), "Milwaukee Bucks": (49, 33),
+    "Cleveland Cavaliers": (48, 34), "Orlando Magic": (47, 35), "Indiana Pacers": (47, 35),
+    "Philadelphia 76ers": (47, 35), "Miami Heat": (46, 36), "Chicago Bulls": (39, 43),
+    "Atlanta Hawks": (36, 46), "Brooklyn Nets": (32, 50), "Toronto Raptors": (25, 57),
+    "Charlotte Hornets": (21, 61), "Washington Wizards": (15, 67), "Detroit Pistons": (14, 68),
+    "OKC Thunder": (57, 25), "Denver Nuggets": (57, 25), "Minnesota Timberwolves": (56, 26),
+    "LA Clippers": (51, 31), "Dallas Mavericks": (50, 32), "Phoenix Suns": (49, 33),
+    "New Orleans Pelicans": (49, 33), "LA Lakers": (47, 35), "Sacramento Kings": (46, 36),
+    "Golden State Warriors": (46, 36), "Houston Rockets": (41, 41), "Utah Jazz": (31, 51),
+    "Memphis Grizzlies": (27, 55), "San Antonio Spurs": (22, 60), "Portland Trail Blazers": (21, 61),
+}
+WIN_LOSS_2024_25 = {
+    "Cleveland Cavaliers": (64, 18), "Boston Celtics": (61, 21), "New York Knicks": (51, 31),
+    "Indiana Pacers": (50, 32), "Milwaukee Bucks": (48, 34), "Detroit Pistons": (44, 38),
+    "Orlando Magic": (41, 41), "Atlanta Hawks": (40, 42), "Chicago Bulls": (39, 43),
+    "Miami Heat": (37, 45), "Toronto Raptors": (30, 52), "Brooklyn Nets": (26, 56),
+    "Philadelphia 76ers": (24, 58), "Charlotte Hornets": (19, 63), "Washington Wizards": (18, 64),
+    "OKC Thunder": (68, 14), "Houston Rockets": (52, 30), "LA Lakers": (50, 32),
+    "Denver Nuggets": (50, 32), "LA Clippers": (50, 32), "Minnesota Timberwolves": (49, 33),
+    "Golden State Warriors": (48, 34), "Memphis Grizzlies": (48, 34), "Sacramento Kings": (40, 42),
+    "Dallas Mavericks": (39, 43), "Phoenix Suns": (36, 46), "Portland Trail Blazers": (36, 46),
+    "San Antonio Spurs": (34, 48), "New Orleans Pelicans": (21, 61), "Utah Jazz": (17, 65),
+}
+WIN_PCT_2025_26 = {team: vals[0] for team, vals in data.items()}
+
 PREVIOUS_CLUSTERS = {
     "Household Names": ["LA Lakers", "Golden State Warriors"],
     "Contenders": ["Houston Rockets", "San Antonio Spurs", "Boston Celtics", "Cleveland Cavaliers",
@@ -157,6 +192,23 @@ if missing:
 raw_cols = ["win_pct", "all_star_count", "impressions_millions", "national_tv_games", "metro_pop_millions"]
 df = pd.DataFrame.from_dict(data, orient="index", columns=raw_cols)
 df.index.name = "Team"
+
+# Replace the single-season 2025-26 win_pct with a 3-season average.
+section("STEP 0 - 3-season win% averaging")
+win_pct_rows = []
+for team in df.index:
+    w24, l24 = WIN_LOSS_2023_24[team]
+    w25, l25 = WIN_LOSS_2024_25[team]
+    wp24 = w24 / (w24 + l24)
+    wp25 = w25 / (w25 + l25)
+    wp26 = WIN_PCT_2025_26[team]
+    avg = (wp24 + wp25 + wp26) / 3
+    win_pct_rows.append((team, wp24, wp25, wp26, avg))
+
+win_pct_df = pd.DataFrame(win_pct_rows,
+                           columns=["Team", "2023-24", "2024-25", "2025-26", "3yr_avg"]).set_index("Team")
+print(win_pct_df.round(4).to_string())
+df["win_pct"] = win_pct_df["3yr_avg"]
 
 warnings = []
 if df["win_pct"].max() > 1 or df["win_pct"].min() < 0:
