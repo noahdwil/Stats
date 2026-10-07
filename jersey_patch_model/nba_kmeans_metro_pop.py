@@ -450,7 +450,18 @@ def px_to_pt(px):
     at this figure's dpi) -- convert so 'pixels' means actual screen pixels."""
     return px * 72 / DPI
 
-cluster_colors = plt.get_cmap("tab10", CHOSEN_K)
+# Fixed palette keyed by the branded cluster name (matches
+# cluster_valuation_chart.py) so colors stay consistent across both charts
+# and don't shuffle between runs just because KMeans assigns cluster IDs
+# in an arbitrary order.
+FIXED_CLUSTER_COLORS = {
+    "Household Names": "#B23A48",
+    "Contenders": "#1F9FB5",
+    "Middle of the Pack": "#2F6FA8",
+    "Off the Radar": "#C46FB5",
+}
+def cluster_colors(cid):
+    return FIXED_CLUSTER_COLORS[closest_old_cluster[cid]]
 
 fig, ax = plt.subplots(figsize=(16, 9), dpi=DPI, facecolor="white")
 ax.set_facecolor("white")
