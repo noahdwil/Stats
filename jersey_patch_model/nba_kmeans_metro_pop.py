@@ -493,7 +493,7 @@ for cid in range(CHOSEN_K):
     sub = df[df["cluster"] == cid]
     ax.scatter(sub["plot_x"], sub["plot_y"], s=px_to_pt(DISC_PX) ** 2, color=cluster_colors(cid),
                edgecolor="white", linewidth=1.2,
-               label=f"{closest_old_cluster[cid]} (n={len(sub)})", zorder=3)
+               label=f"{closest_old_cluster[cid]} — {cluster_names[cid]} (n={len(sub)})", zorder=3)
 
 missing_logos = []
 for team, row in df.iterrows():
