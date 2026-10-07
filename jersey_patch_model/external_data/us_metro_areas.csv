@@ -1,0 +1,388 @@
+cbsa_code,cbsa_short,cbsa_type,total_pop_2025,growth_2024_2025_abs,growth_2024_2025_pct,growth_2020_2025_abs,growth_2020_2025_pct,member_place_count,member_place_pop_2025,anchor_name_short,anchor_state_abbr,state_abbrs,csa_title,rpp_all_items
+35620,New York-Newark-Jersey City,metro,20112448,32361,0.161,29048,0.145,377,13859538,New York,NY,NJ|NY,"New York-Newark, NY-NJ-CT-PA",112.563
+31080,Los Angeles-Long Beach-Anaheim,metro,12844441,-62454,-0.484,-360252,-2.728,122,11769759,Los Angeles,CA,CA,"Los Angeles-Long Beach, CA",113.566
+16980,Chicago-Naperville-Elgin,metro,9434123,22925,0.244,-20309,-0.215,341,8736467,Chicago,IL,IL|IN,"Chicago-Naperville, IL-IN-WI",103.595
+19100,Dallas-Fort Worth-Arlington,metro,8477157,123557,1.479,838863,10.982,202,7734432,Dallas,TX,TX,"Dallas-Fort Worth, TX-OK",103.09
+26420,Houston-Pasadena-The Woodlands,metro,7904627,126720,1.629,754400,10.551,128,4151396,Houston,TX,TX,"Houston-Pasadena, TX",98.629
+12060,Atlanta-Sandy Springs-Roswell,metro,6482182,61953,0.965,375366,6.147,146,2811198,Atlanta,GA,GA,"Atlanta--Athens-Clarke County--Sandy Springs, GA-AL",100.058
+47900,Washington-Arlington-Alexandria,metro,6465724,50206,0.783,187097,2.98,94,1756443,Washington,DC,DC|MD|VA|WV,"Washington-Baltimore-Arlington, DC-MD-VA-WV-PA",108.884
+33100,Miami-Fort Lauderdale-West Palm Beach,metro,6391072,-8909,-0.139,252743,4.117,104,4476313,Miami,FL,FL,"Miami-Port St. Lucie-Fort Lauderdale, FL",114.155
+37980,Philadelphia-Camden-Wilmington,metro,6329118,15960,0.253,84062,1.346,164,2650813,Philadelphia,PA,DE|MD|NJ|PA,"Philadelphia-Reading-Camden, PA-NJ-DE-MD",102.554
+38060,Phoenix-Mesa-Chandler,metro,5228938,59065,1.142,377643,7.784,33,4640265,Phoenix,AZ,AZ,"Phoenix-Mesa, AZ",103.316
+14460,Boston-Cambridge-Newton,metro,5034221,11991,0.239,89502,1.81,38,2717611,Boston,MA,MA|NH,"Boston-Worcester-Providence, MA-RI-NH",108.266
+40140,Riverside-San Bernardino-Ontario,metro,4769007,21131,0.445,167392,3.638,52,4037300,Riverside,CA,CA,"Los Angeles-Long Beach, CA",106.442
+41860,San Francisco-Oakland-Fremont,metro,4630041,6607,0.143,-123610,-2.6,65,4184978,San Francisco,CA,CA,"San Jose-San Francisco-Oakland, CA",115.613
+19820,Detroit-Warren-Dearborn,metro,4390913,13868,0.317,-1465,-0.033,109,2853597,Detroit,MI,MI,"Detroit-Warren-Ann Arbor, MI",100.298
+42660,Seattle-Tacoma-Bellevue,metro,4161883,43068,1.046,143117,3.561,78,3096790,Seattle,WA,WA,"Seattle-Tacoma, WA",111.133
+33460,Minneapolis-St. Paul-Bloomington,metro,3790295,29400,0.782,100023,2.71,214,3508067,Minneapolis,MN,MN|WI,"Minneapolis-St. Paul, MN-WI",104.822
+45300,Tampa-St. Petersburg-Clearwater,metro,3418895,13538,0.398,243613,7.672,34,1234394,Tampa,FL,FL,,100.89
+41740,San Diego-Chula Vista-Carlsbad,metro,3282248,-5294,-0.161,-16400,-0.497,18,2781887,San Diego,CA,CA,,111.887
+19740,Denver-Aurora-Centennial,metro,3092037,10945,0.355,128224,4.326,45,2424871,Denver,CO,CO,"Denver-Aurora-Greeley, CO",105.782
+36740,Orlando-Kissimmee-Sanford,metro,2957672,37690,1.291,284300,10.635,36,1244373,Orlando,FL,FL,"Orlando-Lakeland-Deltona, FL",101.418
+16740,Charlotte-Concord-Gastonia,metro,2938830,54122,1.876,278706,10.477,78,2053970,Charlotte,NC,NC|SC,"Charlotte-Concord, NC-SC",97.348
+12580,Baltimore-Columbia-Towson,metro,2857781,4259,0.149,8883,0.312,21,720269,Baltimore,MD,MD,"Washington-Baltimore-Arlington, DC-MD-VA-WV-PA",104.487
+41180,St. Louis,metro,2814421,3027,0.108,-6441,-0.228,269,1956227,St. Louis,MO,IL|MO,"St. Louis-St. Charles-Farmington, MO-IL",95.088
+41700,San Antonio-New Braunfels,metro,2813140,38402,1.384,254751,9.957,54,2070735,San Antonio,TX,TX,"San Antonio-New Braunfels-Kerrville, TX",94.716
+12420,Austin-Round Rock-San Marcos,metro,2620945,53796,2.096,337554,14.783,49,1897881,Austin,TX,TX,,98.066
+38900,Portland-Vancouver-Hillsboro,metro,2542282,11037,0.436,29430,1.171,58,1804576,Portland,OR,OR|WA,"Portland-Vancouver-Salem, OR-WA",105.421
+40900,Sacramento-Roseville-Folsom,metro,2477274,17467,0.71,78420,3.269,19,1564317,Sacramento,CA,CA,"Sacramento-Roseville, CA",106.67
+38300,Pittsburgh,metro,2421992,-3160,-0.13,-34924,-1.421,267,1227952,Pittsburgh,PA,PA,"Pittsburgh-Weirton-Steubenville, PA-OH-WV",94.671
+29820,Las Vegas-Henderson-North Las Vegas,metro,2407226,21480,0.9,140780,6.211,5,1368644,Las Vegas,NV,NV,"Las Vegas-Henderson, NV",100.215
+17140,Cincinnati,metro,2312858,13107,0.57,63074,2.804,139,1237208,Cincinnati,OH,IN|KY|OH,"Cincinnati-Wilmington, OH-KY-IN",95.37
+28140,Kansas City,metro,2270682,17395,0.772,78619,3.587,163,2072089,Kansas City,MO,KS|MO,"Kansas City-Overland Park-Kansas City, MO-KS",92.543
+18140,Columbus,metro,2242028,21312,0.96,103061,4.818,99,1700079,Columbus,OH,OH,"Columbus-Marion-Zanesville, OH",95.469
+26900,Indianapolis-Carmel-Greenwood,metro,2205695,22271,1.02,116044,5.553,87,1889597,Indianapolis,IN,IN,"Indianapolis-Carmel-Muncie, IN",95.696
+34980,Nashville-Davidson--Murfreesboro--Franklin,metro,2197416,34658,1.602,182976,9.083,55,1715150,Nashville,TN,TN,"Nashville-Davidson--Murfreesboro, TN",96.338
+17410,Cleveland,metro,2165775,2539,0.117,-19972,-0.914,115,1814448,Cleveland,OH,OH,"Cleveland-Akron-Canton, OH",93.923
+41940,San Jose-Sunnyvale-Santa Clara,metro,1984473,7478,0.378,-16006,-0.8,17,1872453,San Jose,CA,CA,"San Jose-San Francisco-Oakland, CA",110.423
+47260,Virginia Beach-Chesapeake-Norfolk,metro,1797213,3774,0.21,17156,0.964,15,1504354,Virginia Beach,VA,NC|VA,"Virginia Beach-Chesapeake, VA-NC",97.941
+27260,Jacksonville,metro,1785500,26153,1.487,179638,11.186,16,1134981,Jacksonville,FL,FL,"Jacksonville-Kingsland-Palatka, FL-GA",99.484
+39300,Providence-Warwick,metro,1708161,6881,0.404,31509,1.879,13,920020,Providence,RI,MA|RI,"Boston-Worcester-Providence, MA-RI-NH",101.773
+39580,Raleigh-Cary,metro,1595720,36793,2.36,181725,12.852,27,1153766,Raleigh,NC,NC,"Raleigh-Durham-Cary, NC",98.157
+33340,Milwaukee-Waukesha,metro,1575010,2512,0.16,251,0.016,64,1466182,Milwaukee,WI,WI,"Milwaukee-Racine-Waukesha, WI",96.937
+36420,Oklahoma City,metro,1512813,13745,0.917,87083,6.108,77,1371701,Oklahoma City,OK,OK,"Oklahoma City-Shawnee, OK",90.408
+31140,Louisville/Jefferson County,metro,1402509,7375,0.529,40357,2.963,137,1223511,Louisville,KY,IN|KY,"Louisville/Jefferson County--Elizabethtown, KY-IN",93.074
+40060,Richmond,metro,1389338,14611,1.063,74892,5.698,10,327919,Richmond,VA,VA,,97.858
+32820,Memphis,metro,1341412,-4217,-0.313,-4019,-0.299,51,1066339,Memphis,TN,AR|MS|TN,"Memphis-Clarksdale-Forrest City, TN-MS-AR",92.179
+41620,Salt Lake City-Murray,metro,1308377,6095,0.468,50439,4.01,31,1281814,Salt Lake City,UT,UT,"Salt Lake City-Provo-Orem, UT-ID",100.868
+23420,Fresno,metro,1203383,3553,0.296,38464,3.302,17,964450,Fresno,CA,CA,"Fresno-Hanford-Corcoran, CA",102.158
+13820,Birmingham,metro,1197766,3450,0.289,17134,1.451,88,857567,Birmingham,AL,AL,"Birmingham-Cullman-Talladega, AL",91.644
+24340,Grand Rapids-Wyoming-Kentwood,metro,1183645,7653,0.651,33632,2.924,44,541321,Grand Rapids,MI,MI,"Grand Rapids-Wyoming, MI",95.546
+25540,Hartford-West Hartford-East Hartford,metro,1171426,5185,0.445,19514,1.694,4,246750,Hartford,CT,CT,"New Haven-Hartford-Waterbury, CT",102.746
+15380,Buffalo-Cheektowaga,metro,1155653,-1510,-0.13,-11244,-0.964,26,497671,Buffalo,NY,NY,"Buffalo-Cheektowaga-Olean, NY",95.844
+46060,Tucson,metro,1074685,1229,0.114,31254,2.995,5,704125,Tucson,AZ,AZ,"Tucson-Nogales, AZ",96.896
+46140,Tulsa,metro,1069273,8193,0.772,53943,5.313,73,840533,Tulsa,OK,OK,"Tulsa-Bartlesville-Muskogee, OK",89.214
+40380,Rochester,metro,1056149,884,0.084,-9224,-0.866,40,342637,Rochester,NY,NY,"Rochester-Batavia-Seneca Falls, NY",97.035
+24860,Greenville-Anderson-Greer,metro,1014101,14474,1.448,85894,9.254,27,339218,Greenville,SC,SC,"Greenville-Spartanburg-Anderson, SC",93.26
+36540,Omaha,metro,1009836,9570,0.957,42232,4.365,78,750040,Omaha,NE,IA|NE,"Omaha-Fremont, NE-IA",91.911
+46520,Urban Honolulu,metro,988703,-1439,-0.145,-27801,-2.735,1,341868,Honolulu,HI,HI,,110.961
+14860,Bridgeport-Stamford-Danbury,metro,978179,4067,0.418,31479,3.325,5,477329,Bridgeport,CT,CT,"New York-Newark, NY-NJ-CT-PA",106.864
+35380,New Orleans-Metairie,metro,970849,-2535,-0.26,-36562,-3.629,9,470264,New Orleans,LA,LA,"New Orleans-Metairie-Slidell, LA-MS",92.597
+28940,Knoxville,metro,968137,8649,0.901,64663,7.157,33,400753,Knoxville,TN,TN,"Knoxville-Morristown-Sevierville, TN",92.569
+35840,North Port-Bradenton-Sarasota,metro,948158,13213,1.413,114439,13.726,9,269392,North Port,FL,FL,"North Port-Bradenton, FL",102.417
+12540,Bakersfield-Delano,metro,927068,2420,0.262,17841,1.962,11,620922,Bakersfield,CA,CA,,100.886
+10740,Albuquerque,metro,925279,651,0.07,8617,0.94,19,741301,Albuquerque,NM,NM,"Albuquerque-Santa Fe-Los Alamos, NM",95.546
+32580,McAllen-Edinburg-Mission,metro,921549,7937,0.869,50761,5.829,22,659508,McAllen,TX,TX,"McAllen-Edinburg, TX",85.895
+10580,Albany-Schenectady-Troy,metro,915835,4303,0.472,16612,1.847,37,358372,Albany,NY,NY,"Albany-Schenectady, NY",99.566
+16700,Charleston-North Charleston,metro,889263,15175,1.736,89632,11.209,27,577205,Charleston,SC,SC,,100.962
+12940,Baton Rouge,metro,888699,4252,0.481,18122,2.082,38,457739,Baton Rouge,LA,LA,"Baton Rouge-Hammond, LA",90.78
+49340,Worcester,metro,888502,4780,0.541,26409,3.063,5,339780,Worcester,MA,MA,"Boston-Worcester-Providence, MA-RI-NH",102.523
+10900,Allentown-Bethlehem-Easton,metro,887615,3458,0.391,25727,2.985,47,407424,Allentown,PA,NJ|PA,"Allentown-Bethlehem-East Stroudsburg, PA-NJ",99.968
+21340,El Paso,metro,881291,-2053,-0.232,12376,1.424,8,765375,El Paso,TX,TX,"El Paso-Las Cruces, TX-NM",89.912
+17900,Columbia,metro,879918,8889,1.021,50438,6.081,30,276221,Columbia,SC,SC,"Columbia-Sumter-Orangeburg, SC",93.662
+15980,Cape Coral-Fort Myers,metro,875607,13940,1.618,114780,15.086,6,445434,Cape Coral,FL,FL,"Cape Coral-Fort Myers-Naples, FL",102.349
+29460,Lakeland-Winter Haven,metro,874790,23356,2.743,149748,20.654,17,358635,Lakeland,FL,FL,"Orlando-Lakeland-Deltona, FL",97.141
+14260,Boise City,metro,864243,18854,2.23,99518,13.014,22,712399,Boise City,ID,ID,"Boise City-Mountain Home-Ontario, ID-OR",98.391
+37100,Oxnard-Thousand Oaks-Ventura,metro,830851,-2580,-0.31,-13507,-1.6,10,737503,Oxnard,CA,CA,"Los Angeles-Long Beach, CA",110.534
+19430,Dayton-Kettering-Beavercreek,metro,826554,5604,0.683,12497,1.535,41,627212,Dayton,OH,OH,"Dayton-Springfield-Kettering, OH",92.694
+44700,Stockton-Lodi,metro,823815,6666,0.816,44581,5.721,8,683923,Stockton,CA,CA,"San Jose-San Francisco-Oakland, CA",105.089
+24660,Greensboro-High Point,metro,805945,6400,0.8,29425,3.789,25,572497,Greensboro,NC,NC,"Greensboro--Winston-Salem--High Point, NC",92.865
+17820,Colorado Springs,metro,781796,4697,0.604,25302,3.345,11,556102,Colorado Springs,CO,CO,,100.707
+30780,Little Rock-North Little Rock-Conway,metro,777607,5019,0.65,29579,3.954,46,580178,Little Rock,AR,AR,"Little Rock-North Little Rock, AR",89.364
+39340,Provo-Orem-Lehi,metro,773426,14434,1.902,102254,15.235,29,760324,Provo,UT,UT,"Salt Lake City-Provo-Orem, UT-ID",98.232
+19780,Des Moines-West Des Moines,metro,758539,7762,1.034,49041,6.912,74,676866,Des Moines,IA,IA,"Des Moines-West Des Moines-Ames, IA",91.701
+19660,Deltona-Daytona Beach-Ormond Beach,metro,746933,9542,1.294,78012,11.662,21,605866,Palm Coast,FL,FL,"Orlando-Lakeland-Deltona, FL",99.367
+28880,Kiryas Joel-Poughkeepsie-Newburgh,metro,718377,4033,0.565,20047,2.871,33,260453,Kiryas Joel,NY,NY,"New York-Newark, NY-NJ-CT-PA",109.422
+49180,Winston-Salem,metro,712206,6869,0.974,36238,5.361,23,422072,Winston-Salem,NC,NC,"Greensboro--Winston-Salem--High Point, NC",92.043
+31540,Madison,metro,709685,4143,0.587,28881,4.242,57,589529,Madison,WI,WI,"Madison-Janesville-Beloit, WI",97.287
+10420,Akron,metro,701780,1628,0.233,-449,-0.064,31,543758,Akron,OH,OH,"Cleveland-Akron-Canton, OH",93.37
+36260,Ogden,metro,672784,4995,0.748,35588,5.585,31,645157,Ogden,UT,UT,"Salt Lake City-Provo-Orem, UT-ID",100.349
+37340,Palm Bay-Melbourne-Titusville,metro,663982,7728,1.178,57366,9.457,16,426350,Palm Bay,FL,FL,,100.005
+48620,Wichita,metro,663809,4305,0.653,16177,2.498,50,591942,Wichita,KS,KS,"Wichita-Arkansas City-Winfield, KS",88.946
+45060,Syracuse,metro,652273,-1275,-0.195,-9790,-1.479,38,261411,Syracuse,NY,NY,"Syracuse-Auburn, NY",95.742
+12260,Augusta-Richmond County,metro,641231,5681,0.894,30237,4.949,27,326015,Augusta,GA,GA|SC,,91.903
+20500,Durham-Chapel Hill,metro,625485,7328,1.185,36576,6.211,8,421723,Durham,NC,NC,"Raleigh-Durham-Cary, NC",97.572
+22220,Fayetteville-Springdale-Rogers,metro,622177,14744,2.427,75468,13.804,34,521309,Fayetteville,AR,AR,,91.353
+25420,Harrisburg-Carlisle,metro,617427,3288,0.535,25722,4.347,37,166506,Harrisburg,PA,PA,"Harrisburg-York-Lebanon, PA",98.65
+27140,Jackson,metro,609847,1350,0.222,-10093,-1.628,45,379506,Jackson,MS,MS,"Jackson-Vicksburg-Brookhaven, MS",89.048
+44060,Spokane-Spokane Valley,metro,608012,3349,0.554,22234,3.796,19,402018,Spokane,WA,WA,"Spokane-Spokane Valley-Coeur d'Alene, WA-ID",100.346
+45780,Toledo,metro,599376,-26,-0.004,-6846,-1.129,42,442570,Toledo,OH,OH,,91.455
+16860,Chattanooga,metro,594530,4666,0.791,31239,5.546,25,319180,Chattanooga,TN,GA|TN,"Chattanooga-Cleveland-Dalton, TN-GA-AL",91.464
+35300,New Haven,metro,578741,1203,0.208,7995,1.401,5,310932,New Haven,CT,CT,"New Haven-Hartford-Waterbury, CT",104.559
+39900,Reno,metro,578734,5393,0.941,28906,5.257,4,424964,Reno,NV,NV,"Reno-Carson City-Gardnerville Ranchos, NV-CA",101.014
+38860,Portland-South Portland,metro,577635,4170,0.727,25871,4.689,7,193539,Portland,ME,ME,"Portland-Lewiston-South Portland, ME",101.858
+42540,Scranton--Wilkes-Barre,metro,574418,1245,0.217,6847,1.206,64,363942,Scranton,PA,PA,,93.556
+38940,Port St. Lucie,metro,568721,11927,2.142,81063,16.623,8,350039,Port St. Lucie,FL,FL,"Miami-Port St. Lucie-Fort Lauderdale, FL",100.228
+29540,Lancaster,metro,563159,1097,0.195,10171,1.839,19,161044,Lancaster,PA,PA,,98.257
+33700,Modesto,metro,557719,347,0.062,4435,0.802,9,447650,Modesto,CA,CA,"San Jose-San Francisco-Oakland, CA",104.108
+26620,Huntsville,metro,556444,14322,2.642,64723,13.163,11,350396,Huntsville,AL,AL,"Huntsville-Decatur-Albertville, AL-TN",93.072
+37860,Pensacola-Ferry Pass-Brent,metro,544949,5106,0.946,35050,6.874,5,74717,Pensacola,FL,FL,,97.717
+30460,Lexington-Fayette,metro,535174,4358,0.821,18340,3.549,13,455681,Lexington-Fayette urban county,KY,KY,"Lexington-Fayette--Richmond--Frankfort, KY",92.889
+28660,Killeen-Temple,metro,511497,5309,1.049,35986,7.568,19,412582,Killeen,TX,TX,,91.132
+44180,Springfield,metro,500694,4331,0.873,25259,5.313,33,307201,Springfield,MO,MO,,88.585
+48900,Wilmington,metro,492772,12398,2.581,70170,16.604,29,240843,Wilmington,NC,NC,,96.422
+42220,Santa Rosa-Petaluma,metro,486444,1081,0.223,-2416,-0.494,9,355089,Santa Rosa,CA,CA,,107.784
+47300,Visalia,metro,485146,1295,0.268,12028,2.542,8,350584,Visalia,CA,CA,,99.825
+29620,Lansing-East Lansing,metro,479722,2963,0.621,6176,1.304,26,229693,Lansing,MI,MI,"Lansing-East Lansing-Owosso, MI",94.991
+49620,York-Hanover,metro,473197,3211,0.683,16763,3.673,37,124866,York,PA,PA,"Harrisburg-York-Lebanon, PA",96
+23060,Fort Wayne,metro,466258,3392,0.733,18479,4.127,17,340468,Fort Wayne,IN,IN,"Fort Wayne-Huntington-Auburn, IN",92.572
+44140,Springfield,metro,464338,920,0.199,-1480,-0.318,7,358560,Springfield,MA,MA,"Springfield-Amherst Town-Northampton, MA",96.061
+47930,Waterbury-Shelton,metro,463349,1869,0.405,13201,2.933,6,285363,Waterbury,CT,CT,"New Haven-Hartford-Waterbury, CT",99.778
+46700,Vallejo,metro,455376,300,0.066,1820,0.401,7,437120,Vallejo,CA,CA,"San Jose-San Francisco-Oakland, CA",108.479
+18580,Corpus Christi,metro,451191,1046,0.232,5260,1.18,21,407655,Corpus Christi,TX,TX,"Corpus Christi-Kingsville-Alice, TX",92.671
+41420,Salem,metro,445814,2391,0.539,12452,2.873,23,338529,Salem,OR,OR,"Portland-Vancouver-Salem, OR-WA",103.649
+36100,Ocala,metro,442660,14665,3.426,66768,17.763,5,81407,Ocala,FL,FL,,95.234
+42200,Santa Maria-Santa Barbara,metro,442065,-1016,-0.229,-6149,-1.372,8,306210,Santa Maria,CA,CA,,108.798
+39740,Reading,metro,440072,1693,0.386,11236,2.62,28,177186,Reading,PA,PA,"Philadelphia-Reading-Camden, PA-NJ-DE-MD",97.06
+42340,Savannah,metro,438314,4278,0.986,33523,8.282,13,260254,Savannah,GA,GA,"Savannah-Hinesville-Statesboro, GA",95.206
+15180,Brownsville-Harlingen,metro,433946,994,0.23,12819,3.044,17,337615,Brownsville,TX,TX,"Brownsville-Harlingen-Raymondville, TX",85.975
+41500,Salinas,metro,433729,282,0.065,-7293,-1.654,12,332412,Salinas,CA,CA,,109.042
+31700,Manchester-Nashua,metro,433415,2973,0.691,10471,2.476,2,209253,Manchester,NH,NH,"Boston-Worcester-Providence, MA-RI-NH",105.657
+25060,Gulfport-Biloxi,metro,431329,3865,0.904,15078,3.622,13,264994,Gulfport,MS,MS,,90.006
+34820,Myrtle Beach-Conway-North Myrtle Beach,metro,427551,13244,3.197,76515,21.797,8,102362,Myrtle Beach,SC,SC,"Myrtle Beach-Conway, SC",93.642
+29180,Lafayette,metro,423758,3075,0.731,15660,3.837,23,246754,Lafayette,LA,LA,"Lafayette-New Iberia-Opelousas, LA",87.209
+49660,Youngstown-Warren,metro,423678,-913,-0.215,-6988,-1.623,21,186865,Youngstown,OH,OH,"Youngstown-Warren-Salem, OH",87.394
+11700,Asheville,metro,422345,-634,-0.15,15411,3.787,14,158903,Asheville,NC,NC,"Asheville-Waynesville-Brevard, NC",96.506
+34940,Naples-Marco Island,metro,417131,409,0.098,41368,11.009,3,36934,Naples,FL,FL,"Cape Coral-Fort Myers-Naples, FL",103.2
+33660,Mobile,metro,411658,-535,-0.13,-3154,-0.76,11,266819,Mobile,AL,AL,"Mobile-Daphne-Fairhope, AL",88.098
+43900,Spartanburg,metro,407656,10928,2.755,52426,14.758,17,86394,Spartanburg,SC,SC,"Greenville-Spartanburg-Anderson, SC",91.051
+11260,Anchorage,metro,405821,1198,0.296,7506,1.884,4,306688,Anchorage,AK,AK,,105.42
+22420,Flint,metro,401093,-195,-0.049,-5114,-1.259,14,161941,Flint,MI,MI,"Detroit-Warren-Ann Arbor, MI",93.034
+15940,Canton-Massillon,metro,400246,439,0.11,-1343,-0.334,23,177970,Canton,OH,OH,"Cleveland-Akron-Canton, OH",89.406
+13140,Beaumont-Port Arthur,metro,399310,208,0.052,1715,0.431,21,290835,Beaumont,TX,TX,,90.046
+45940,Trenton-Princeton,metro,399289,1960,0.493,11955,3.086,5,133815,Trenton,NJ,NJ,"New York-Newark, NY-NJ-CT-PA",103.18
+45220,Tallahassee,metro,397442,1394,0.352,13139,3.419,10,226654,Tallahassee,FL,FL,"Tallahassee-Bainbridge, FL-GA",93.919
+22180,Fayetteville,metro,395412,2505,0.638,8614,2.227,10,249790,Fayetteville,NC,NC,"Fayetteville-Lumberton-Pinehurst, NC",91.978
+33860,Montgomery,metro,388747,814,0.21,2697,0.699,19,287988,Montgomery,AL,AL,"Montgomery-Selma, AL",89.682
+43340,Shreveport-Bossier City,metro,383474,-290,-0.076,-9933,-2.525,23,268468,Shreveport,LA,LA,"Shreveport-Bossier City-Minden, LA",84.766
+21660,Eugene-Springfield,metro,381584,-497,-0.13,-1385,-0.362,12,285732,Eugene,OR,OR,,101.568
+19340,Davenport-Moline-Rock Island,metro,380452,536,0.141,-3869,-1.007,55,327874,Davenport,IA,IA|IL,"Davenport-Moline, IA-IL",89.079
+24540,Greeley,metro,378426,7146,1.925,49445,15.03,26,359318,Greeley,CO,CO,"Denver-Aurora-Greeley, CO",100.176
+22660,Fort Collins-Loveland,metro,377292,3092,0.826,18223,5.075,6,296516,Fort Collins,CO,CO,,101.128
+25860,Hickory-Lenoir-Morganton,metro,376890,3529,0.945,11582,3.17,24,153637,Hickory,NC,NC,"Charlotte-Concord, NC-SC",88.486
+12100,Atlantic City-Hammonton,metro,372047,-514,-0.138,2252,0.609,29,180630,Atlantic City,NJ,NJ,"Philadelphia-Reading-Camden, PA-NJ-DE-MD",98.857
+11460,Ann Arbor,metro,370214,1258,0.341,-2051,-0.551,8,169208,Ann Arbor,MI,MI,"Detroit-Warren-Ann Arbor, MI",100.88
+31180,Lubbock,metro,368431,3767,1.033,17181,4.891,24,324340,Lubbock,TX,TX,"Lubbock-Plainview, TX",91.317
+26580,Huntington-Ashland,metro,365965,-1090,-0.297,-10190,-2.709,34,138368,Huntington,WV,KY|OH|WV,"Charleston-Huntington-Ashland, WV-OH-KY",88.422
+37900,Peoria,metro,363505,-56,-0.015,-5660,-1.533,58,283548,Peoria,IL,IL,"Peoria-Canton, IL",91.231
+23540,Gainesville,metro,359036,1815,0.508,19786,5.832,19,193683,Gainesville,FL,FL,"Gainesville-Lake City, FL",96.733
+30700,Lincoln,metro,352081,2850,0.816,11852,3.484,23,325789,Lincoln,NE,NE,"Lincoln-Beatrice, NE",91.581
+17300,Clarksville,metro,349001,2398,0.692,28481,8.886,9,233758,Clarksville,TN,KY|TN,,90.947
+40420,Rockford,metro,337242,751,0.223,-1555,-0.459,16,263997,Rockford,IL,IL,"Rockford-Freeport-Rochelle, IL",92.154
+24580,Green Bay,metro,336756,1730,0.516,8494,2.588,21,259394,Green Bay,WI,WI,"Green Bay-Shawano, WI",93.086
+14500,Boulder,metro,328560,-925,-0.281,-2201,-0.665,9,274083,Boulder,CO,CO,"Denver-Aurora-Greeley, CO",105.202
+17980,Columbus,metro,324830,437,0.135,-4050,-1.231,15,258668,Columbus,GA,AL|GA,"Columbus-Auburn-Opelika, GA-AL",89.296
+43780,South Bend-Mishawaka,metro,324538,69,0.021,40,0.012,14,174525,South Bend,IN,IN|MI,"South Bend-Elkhart-Mishawaka, IN-MI",92.858
+28420,Kennewick-Richland,metro,324334,4017,1.254,20726,6.827,9,272014,Kennewick,WA,WA,"Kennewick-Richland-Walla Walla, WA",100.079
+40220,Roanoke,metro,316547,256,0.081,1289,0.409,9,140750,Roanoke,VA,VA,,93.618
+25180,Hagerstown-Martinsburg,metro,315280,4344,1.397,21445,7.298,13,78717,Hagerstown,MD,MD|WV,"Washington-Baltimore-Arlington, DC-MD-VA-WV-PA",94.171
+18880,Crestview-Fort Walton Beach-Destin,metro,315098,4897,1.579,28126,9.801,12,110643,Crestview,FL,FL,,97.031
+28700,Kingsport-Bristol,metro,314834,747,0.238,7208,2.343,18,138510,Kingsport,TN,TN|VA,"Johnson City-Kingsport-Bristol, TN-VA",86.447
+43620,Sioux Falls,metro,314638,5418,1.752,28224,9.854,40,279253,Sioux Falls,SD,MN|SD,,90.631
+47380,Waco,metro,308807,1740,0.567,13021,4.402,30,243636,Waco,TX,TX,,92.55
+36500,Olympia-Lacey-Tumwater,metro,304261,2129,0.705,9471,3.213,7,160676,Lacey,WA,WA,"Seattle-Tacoma, WA",103.67
+30980,Longview,metro,297315,864,0.291,11074,3.869,23,171641,Longview,TX,TX,,89.485
+32900,Merced,metro,297260,453,0.153,14803,5.241,6,207970,Merced,CA,CA,"San Jose-San Francisco-Oakland, CA",98.275
+17780,College Station-Bryan,metro,287476,1381,0.483,19242,7.174,11,235542,College Station,TX,TX,,90.951
+46540,Utica-Rome,metro,285611,-1049,-0.366,-6667,-2.281,30,149889,Utica,NY,NY,,92.678
+35980,Norwich-New London-Willimantic,metro,284015,844,0.298,3548,1.265,6,83159,Norwich,CT,CT,"New Haven-Hartford-Waterbury, CT",100.445
+14740,Bremerton-Silverdale-Port Orchard,metro,283374,2646,0.943,7760,2.816,4,102761,Bremerton,WA,WA,"Seattle-Tacoma, WA",105.607
+42020,San Luis Obispo-Paso Robles,metro,282367,214,0.076,-73,-0.026,7,160829,San Luis Obispo,CA,CA,,108.596
+46220,Tuscaloosa,metro,281850,219,0.078,12073,4.475,23,173939,Tuscaloosa,AL,AL,,87.722
+29700,Laredo,metro,281224,654,0.233,14110,5.282,3,276495,Laredo,TX,TX,,86.956
+20260,Duluth,metro,281219,-54,-0.019,498,0.177,42,203628,Duluth,MN,MN|WI,"Duluth-Grand Rapids, MN-WI",88.768
+16300,Cedar Rapids,metro,279285,1880,0.678,2760,0.998,39,242341,Cedar Rapids,IA,IA,"Cedar Rapids-Iowa City, IA",88.963
+43640,Slidell-Mandeville-Covington,metro,279108,1443,0.52,14543,5.497,8,60572,Slidell,LA,LA,"New Orleans-Metairie-Slidell, LA-MS",92.726
+11100,Amarillo,metro,276235,1965,0.716,7538,2.805,13,229848,Amarillo,TX,TX,"Amarillo-Borger, TX",91.82
+21780,Evansville,metro,273786,1267,0.465,4533,1.684,13,142117,Evansville,IN,IN,"Evansville-Henderson, IN-KY",91.528
+22020,Fargo,metro,269528,2918,1.094,19677,7.875,37,254097,Fargo,ND,MN|ND,"Fargo-Wahpeton, ND-MN",90.871
+31340,Lynchburg,metro,269169,2167,0.812,7576,2.896,7,98014,Lynchburg,VA,VA,,89.363
+19300,Daphne-Fairhope-Foley,metro,267761,6109,2.335,35983,15.525,14,156120,Daphne,AL,AL,"Mobile-Daphne-Fairhope, AL",94.69
+13460,Bend,metro,266376,2169,0.821,18861,7.62,8,173937,Bend,OR,OR,,103.607
+21500,Erie,metro,265832,-603,-0.226,-5206,-1.921,16,124618,Erie,PA,PA,"Erie-Meadville, PA",90.95
+28020,Kalamazoo-Portage,metro,263795,673,0.256,2126,0.812,9,134441,Kalamazoo,MI,MI,"Kalamazoo-Battle Creek-Portage, MI",94.84
+49420,Yakima,metro,259185,214,0.083,2456,0.957,14,171356,Yakima,WA,WA,,95.545
+42100,Santa Cruz-Watsonville,metro,258852,-2565,-0.981,-13311,-4.891,4,133505,Santa Cruz,CA,CA,"San Jose-San Francisco-Oakland, CA",109.896
+39150,Prescott Valley-Prescott,metro,252552,1356,0.54,16342,6.918,9,159446,Prescott Valley,AZ,AZ,,98.255
+46340,Tyler,metro,252549,3020,1.21,19079,8.172,10,145225,Tyler,TX,TX,"Tyler-Jacksonville, TX",92.156
+11540,Appleton,metro,249876,1327,0.534,6736,2.77,20,170758,Appleton,WI,WI,"Appleton-Oshkosh-Neenah, WI",92.419
+29340,Lake Charles,metro,244655,1328,0.546,-10011,-3.931,11,133506,Lake Charles,LA,LA,"Lake Charles-DeRidder, LA",85.852
+13780,Binghamton,metro,243189,-249,-0.102,-3942,-1.595,14,90420,Binghamton,NY,NY,,92.863
+25940,Hilton Head Island-Bluffton-Port Royal,metro,242966,3622,1.513,27062,12.534,6,127703,Hilton Head Island,SC,SC,,98.017
+16580,Champaign-Urbana,metro,239979,833,0.348,3318,1.402,40,202814,Champaign,IL,IL,"Champaign-Urbana-Danville, IL",92.704
+31420,Macon-Bibb County,metro,238553,677,0.285,4746,2.03,7,168118,Macon-Bibb County,GA,GA,"Macon-Bibb County--Warner Robins, GA",88.528
+13380,Bellingham,metro,236392,1791,0.763,9547,4.209,7,144069,Bellingham,WA,WA,,103.334
+22900,Fort Smith,metro,234140,1164,0.5,6929,3.05,29,168439,Fort Smith,AR,AR|OK,,85.888
+12700,Barnstable Town,metro,233539,-412,-0.176,4475,1.954,1,50101,Barnstable Town,MA,MA,"Boston-Worcester-Providence, MA-RI-NH",98.351
+45820,Topeka,metro,233052,274,0.118,-102,-0.044,38,152200,Topeka,KS,KS,,88.82
+40340,Rochester,metro,231184,1084,0.471,4861,2.148,36,184680,Rochester,MN,MN,"Rochester-Austin-Winona, MN",90.821
+37460,Panama City-Panama City Beach,metro,231174,4574,2.019,30627,15.272,12,115212,Panama City,FL,FL,,97.296
+29740,Las Cruces,metro,229091,987,0.433,9528,4.34,5,147548,Las Cruces,NM,NM,"El Paso-Las Cruces, TX-NM",90.212
+16820,Charlottesville,metro,228597,1368,0.602,7079,3.196,3,45303,Charlottesville,VA,VA,,99.146
+29200,Lafayette-West Lafayette,metro,228468,500,0.219,4756,2.126,21,138150,Lafayette,IN,IN,"Lafayette-West Lafayette-Frankfort, IN",93.43
+29420,Lake Havasu City-Kingman,metro,228102,1840,0.813,14841,6.959,4,142658,Lake Havasu City,AZ,AZ,,94.098
+15540,Burlington-South Burlington,metro,227803,-511,-0.224,2236,0.991,8,95827,Burlington,VT,VT,"Burlington-South Burlington-Barre, VT",100.949
+23580,Gainesville,metro,226568,3023,1.352,23755,11.713,7,74251,Gainesville,GA,GA,"Atlanta--Athens-Clarke County--Sandy Springs, GA-AL",96.766
+49740,Yuma,metro,224449,3061,1.383,19443,9.484,4,164862,Yuma,AZ,AZ,,92.706
+12020,Athens-Clarke County,metro,224148,-11,-0.005,8752,4.063,16,143465,Athens,GA,GA,"Atlanta--Athens-Clarke County--Sandy Springs, GA-AL",93.343
+33740,Monroe,metro,222390,-705,-0.316,-4757,-2.094,19,88114,Monroe,LA,LA,"Monroe-Ruston, LA",83.597
+32780,Medford,metro,221795,448,0.202,-1473,-0.66,11,157653,Medford,OR,OR,"Medford-Grants Pass, OR",101.433
+17860,Columbia,metro,219062,898,0.412,8198,3.888,24,159747,Columbia,MO,MO,"Columbia-Jefferson City-Moberly, MO",89.438
+39460,Punta Gorda,metro,217212,5756,2.722,30389,16.266,1,20383,Punta Gorda,FL,FL,"North Port-Bradenton, FL",100.525
+27340,Jacksonville,metro,217175,2503,1.166,12700,6.211,5,86396,Jacksonville,NC,NC,,92.085
+27740,Johnson City,metro,216416,1549,0.721,9141,4.41,6,106527,Johnson City,TN,TN,"Johnson City-Kingsport-Bristol, TN-VA",87.928
+41100,St. George,metro,213670,5239,2.514,33386,18.519,15,205710,St. George,UT,UT,,97.321
+30500,Lexington Park,metro,211176,339,0.161,4613,2.233,3,13678,Chesapeake Beach,MD,MD,"Washington-Baltimore-Arlington, DC-MD-VA-WV-PA",100.76
+17020,Chico,metro,209211,625,0.3,-2418,-1.143,5,144740,Chico,CA,CA,,101.197
+27900,Joplin,metro,208796,1552,0.749,8024,3.997,48,140814,Joplin,MO,KS|MO,"Joplin-Miami, MO-OK-KS",85.718
+21140,Elkhart-Goshen,metro,208774,578,0.278,1725,0.833,7,104048,Elkhart,IN,IN,"South Bend-Elkhart-Mishawaka, IN-MI",90.325
+47580,Warner Robins,metro,208091,3676,1.798,16471,8.596,5,138752,Warner Robins,GA,GA,"Macon-Bibb County--Warner Robins, GA",93.789
+12220,Auburn-Opelika,metro,208013,1956,0.949,14145,7.296,8,137090,Auburn,AL,AL,"Columbus-Auburn-Opelika, GA-AL",87.933
+44100,Springfield,metro,206033,73,0.035,-2669,-1.279,30,168082,Springfield,IL,IL,"Springfield-Jacksonville-Lincoln, IL",92.745
+41060,St. Cloud,metro,205854,972,0.474,6195,3.103,33,160949,St. Cloud,MN,MN,"Minneapolis-St. Paul, MN-WI",87.632
+22500,Florence,metro,201392,392,0.195,1420,0.71,13,69252,Florence,SC,SC,,86.774
+16620,Charleston,metro,200170,-1394,-0.692,-10425,-4.95,19,94316,Charleston,WV,WV,"Charleston-Huntington-Ashland, WV-OH-KY",88.717
+26380,Houma-Bayou Cane-Thibodaux,metro,199668,61,0.031,-7464,-3.603,4,51277,Houma,LA,LA,,85.103
+39540,Racine-Mount Pleasant,metro,198919,478,0.241,698,0.352,13,173951,Racine,WI,WI,"Milwaukee-Racine-Waukesha, WI",95.961
+14540,Bowling Green,metro,197180,3377,1.742,17540,9.764,10,88724,Bowling Green,KY,KY,"Bowling Green-Glasgow-Franklin, KY",90.179
+20100,Dover,metro,194786,1910,0.99,12937,7.114,19,75806,Dover,DE,DE,"Philadelphia-Reading-Camden, PA-NJ-DE-MD",97.507
+13740,Billings,metro,193603,1122,0.583,9441,5.126,9,135117,Billings,MT,MT,,93.526
+33260,Midland,metro,193139,3777,1.995,17552,9.996,2,150309,Midland,TX,TX,"Midland-Odessa-Andrews, TX",95.783
+17660,Coeur d'Alene,metro,191864,3466,1.84,20498,11.962,14,143562,Coeur d'Alene,ID,ID,"Spokane-Spokane Valley-Coeur d'Alene, WA-ID",98.293
+40980,Saginaw,metro,187688,-74,-0.039,-2452,-1.29,8,56388,Saginaw,MI,MI,"Saginaw-Midland-Bay City, MI",90.891
+49700,Yuba City,metro,187478,1104,0.592,6273,3.462,4,95956,Yuba City,CA,CA,"Sacramento-Roseville, CA",104.233
+15500,Burlington,metro,186177,2816,1.536,14702,8.574,9,125049,Burlington,NC,NC,"Greensboro--Winston-Salem--High Point, NC",93.196
+10180,Abilene,metro,185429,1710,0.931,8835,5.003,17,152328,Abilene,TX,TX,"Abilene-Sweetwater, TX",90.364
+27180,Jackson,metro,184569,853,0.464,4071,2.255,20,117253,Jackson,TN,TN,,85.522
+28740,Kingston,metro,183330,235,0.128,1495,0.822,4,40685,Kingston,NY,NY,"New York-Newark, NY-NJ-CT-PA",100.709
+24780,Greenville,metro,182936,2054,1.136,11119,6.471,10,122477,Greenville,NC,NC,"Greenville-Washington, NC",88.402
+26980,Iowa City,metro,182711,1246,0.687,7286,4.153,20,152676,Iowa City,IA,IA,"Cedar Rapids-Iowa City, IA",91.509
+39820,Redding,metro,181648,256,0.141,-804,-0.441,3,115431,Redding,CA,CA,"Redding-Red Bluff, CA",100.684
+13980,Blacksburg-Christiansburg-Radford,metro,181616,119,0.066,-234,-0.129,11,103584,Blacksburg,VA,VA,,92.71
+20940,El Centro,metro,181411,-1360,-0.744,1706,0.949,7,146961,El Centro,CA,CA,,95.174
+34740,Muskegon-Norton Shores,metro,177901,676,0.381,3155,1.805,11,90156,Muskegon,MI,MI,"Grand Rapids-Wyoming, MI",92.519
+20740,Eau Claire,metro,176647,742,0.422,4646,2.701,13,119441,Eau Claire,WI,WI,"Eau Claire-Menomonie, WI",92.796
+36780,Oshkosh-Neenah,metro,174218,924,0.533,2478,1.443,6,138940,Oshkosh,WI,WI,"Appleton-Oshkosh-Neenah, WI",92.929
+26820,Idaho Falls,metro,173851,2476,1.445,16428,10.436,15,106643,Idaho Falls,ID,ID,"Idaho Falls-Rexburg-Blackfoot, ID",94.412
+36220,Odessa,metro,173801,3147,1.844,8624,5.221,2,122942,Odessa,TX,TX,"Midland-Odessa-Andrews, TX",93.896
+42680,Sebastian-Vero Beach-West Vero Corridor,metro,172799,1239,0.722,13005,8.139,5,55001,Sebastian,FL,FL,"Miami-Port St. Lucie-Fort Lauderdale, FL",98.308
+26140,Homosassa Springs,metro,171666,1845,1.086,17823,11.585,2,11414,Inverness,FL,FL,,93.467
+14010,Bloomington,metro,171419,-93,-0.054,193,0.113,21,152646,Bloomington,IL,IL,"Bloomington-Pontiac, IL",93.537
+29100,La Crosse-Onalaska,metro,171182,319,0.187,838,0.492,24,114674,La Crosse,WI,MN|WI,"La Crosse-Onalaska-Sparta, WI-MN",91.769
+39380,Pueblo,metro,169277,-885,-0.52,1110,0.66,3,110910,Pueblo,CO,CO,"Pueblo-Cañon City, CO",91.762
+45460,Terre Haute,metro,169241,467,0.277,359,0.213,25,91192,Terre Haute,IN,IN,,87.797
+47940,Waterloo-Cedar Falls,metro,169189,-19,-0.011,720,0.427,26,147852,Waterloo,IA,IA,,87.057
+28450,Kenosha,metro,168448,0,0,-702,-0.415,7,158091,Kenosha,WI,WI,"Chicago-Naperville, IL-IN-WI",101.118
+27500,Janesville-Beloit,metro,166472,807,0.487,2788,1.703,8,126412,Janesville,WI,WI,"Madison-Janesville-Beloit, WI",93.703
+14020,Bloomington,metro,165231,741,0.45,3126,1.928,5,93688,Bloomington,IN,IN,"Bloomington-Bedford, IN",95.084
+11200,Amherst Town-Northampton,metro,164065,-614,-0.373,1750,1.078,3,87818,Amherst Town,MA,MA,"Springfield-Amherst Town-Northampton, MA",100.243
+24300,Grand Junction,metro,162845,1445,0.895,7135,4.582,5,89260,Grand Junction,CO,CO,,95.476
+30860,Logan,metro,160889,560,0.349,13535,9.185,25,146204,Logan,UT,ID|UT,,95.927
+27980,Kahului-Wailuku,metro,160674,-1646,-1.014,-4162,-2.525,0,0,,,HI,,109.393
+16540,Chambersburg,metro,160652,1176,0.737,4708,3.019,6,42053,Chambersburg,PA,PA,"Washington-Baltimore-Arlington, DC-MD-VA-WV-PA",94.642
+19460,Decatur,metro,160326,427,0.267,3816,2.438,12,89532,Decatur,AL,AL,"Huntsville-Decatur-Albertville, AL-TN",87.212
+27100,Jackson,metro,159552,-36,-0.023,-807,-0.503,7,36703,Jackson,MI,MI,,91.779
+25620,Hattiesburg,metro,158014,839,0.534,4120,2.677,8,68603,Hattiesburg,MS,MS,"Hattiesburg-Laurel, MS",87.633
+12620,Bangor,metro,157967,684,0.435,5769,3.79,3,49743,Bangor,ME,ME,,96.508
+48680,Wildwood-The Villages,metro,157772,3511,2.276,28020,21.595,5,25466,Wildwood,FL,FL,"Orlando-Lakeland-Deltona, FL",85.424
+44300,State College,metro,157393,-1112,-0.702,-778,-0.492,10,54629,State College,PA,PA,"State College-DuBois, PA",96.762
+47220,Vineland,metro,157148,741,0.474,3003,1.948,4,119564,Vineland,NJ,NJ,"Philadelphia-Reading-Camden, PA-NJ-DE-MD",95.968
+45900,Traverse City,metro,156972,527,0.337,3510,2.287,14,25014,Traverse City,MI,MI,,93.372
+39660,Rapid City,metro,156934,423,0.27,9537,6.47,17,111159,Rapid City,SD,SD,"Rapid City-Spearfish, SD",89.16
+42140,Santa Fe,metro,156907,-413,-0.263,2076,1.341,2,95994,Santa Fe,NM,NM,"Albuquerque-Santa Fe-Los Alamos, NM",98.767
+22520,Florence-Muscle Shoals,metro,156609,238,0.152,5812,3.854,13,86100,Florence,AL,AL,"Florence-Muscle Shoals-Russellville, AL",84.817
+20020,Dothan,metro,156266,994,0.64,5260,3.483,23,109718,Dothan,AL,AL,"Dothan-Enterprise-Ozark, AL",83.833
+33780,Monroe,metro,156004,134,0.086,1183,0.764,8,33456,Monroe,MI,MI,"Detroit-Warren-Ann Arbor, MI",93.492
+25260,Hanford-Corcoran,metro,154327,208,0.135,1847,1.211,4,125357,Hanford,CA,CA,"Fresno-Hanford-Corcoran, CA",101.612
+43300,Sherman-Denison,metro,153613,2748,1.821,18012,13.283,16,110475,Sherman,TX,TX,"Dallas-Fort Worth, TX-OK",93.771
+46660,Valdosta,metro,153276,526,0.344,5139,3.469,9,74847,Valdosta,GA,GA,,88.271
+27620,Jefferson City,metro,152712,814,0.536,2411,1.604,25,78691,Jefferson City,MO,MO,"Columbia-Jefferson City-Moberly, MO",87.975
+35660,Niles,metro,152444,50,0.033,-2082,-1.347,17,47020,Niles,MI,MI,"South Bend-Elkhart-Mishawaka, IN-MI",92.37
+49020,Winchester,metro,152332,2302,1.534,9694,6.796,5,34164,Winchester,VA,VA|WV,"Washington-Baltimore-Arlington, DC-MD-VA-WV-PA",96.45
+48660,Wichita Falls,metro,149448,48,0.032,1322,0.892,18,133334,Wichita Falls,TX,TX,,89.513
+40580,Rocky Mount,metro,148486,630,0.426,4643,3.228,18,85768,Rocky Mount,NC,NC,"Rocky Mount-Wilson-Roanoke Rapids, NC",88.012
+10780,Alexandria,metro,147952,-91,-0.061,-4237,-2.784,16,69874,Alexandria,LA,LA,,85.686
+19140,Dalton,metro,147819,862,0.587,4980,3.486,6,45365,Dalton,GA,GA,"Chattanooga-Cleveland-Dalton, TN-GA-AL",89.844
+45500,Texarkana,metro,146816,81,0.055,-703,-0.477,18,93686,Texarkana,TX,AR|TX,,84.012
+30140,Lebanon,metro,146380,988,0.68,3128,2.184,8,47534,Lebanon,PA,PA,"Harrisburg-York-Lebanon, PA",93.214
+43580,Sioux City,metro,145738,129,0.089,1363,0.944,25,124273,Sioux City,IA,IA|NE|SD,"Sioux City-Le Mars, IA-NE-SD",86.454
+10500,Albany,metro,145510,-197,-0.135,-3403,-2.285,11,83001,Albany,GA,GA,,87.669
+22380,Flagstaff,metro,144368,-290,-0.2,-743,-0.512,5,89751,Flagstaff,AZ,AZ,,100.325
+34060,Morgantown,metro,141995,77,0.054,1956,1.397,15,44451,Morgantown,WV,WV,,93.323
+25220,Hammond,metro,141346,1363,0.974,8180,6.143,8,41807,Hammond,LA,LA,"Baton Rouge-Hammond, LA",84.46
+25500,Harrisonburg,metro,140155,1044,0.75,4578,3.377,8,73894,Harrisonburg,VA,VA,"Harrisonburg-Staunton-Stuarts Draft, VA",94.892
+13900,Bismarck,metro,139750,1158,0.836,6128,4.586,11,111177,Bismarck,ND,ND,,91.024
+27860,Jonesboro,metro,139440,744,0.536,5235,3.901,18,114033,Jonesboro,AR,AR,"Jonesboro-Paragould, AR",85.876
+48140,Wausau,metro,139432,338,0.243,1369,0.992,17,95809,Wausau,WI,WI,"Wausau-Stevens Point-Wisconsin Rapids, WI",92.651
+31740,Manhattan,metro,136122,1727,1.285,2069,1.543,19,93846,Manhattan,KS,KS,,90.162
+44220,Springfield,metro,135340,-830,-0.61,-635,-0.467,9,69673,Springfield,OH,OH,"Dayton-Springfield-Kettering, OH",90.482
+48540,Wheeling,metro,134089,-928,-0.687,-5437,-3.897,24,71984,Wheeling,WV,OH|WV,,88.323
+17420,Cleveland,metro,134057,1535,1.158,7901,6.263,5,54470,Cleveland,TN,TN,"Chattanooga-Cleveland-Dalton, TN-GA-AL",88.08
+12980,Battle Creek,metro,133408,-203,-0.152,-895,-0.666,8,75124,Battle Creek,MI,MI,"Kalamazoo-Battle Creek-Portage, MI",90.541
+34580,Mount Vernon-Anacortes,metro,132975,725,0.548,3458,2.67,8,80470,Mount Vernon,WA,WA,"Seattle-Tacoma, WA",102.443
+34900,Napa,metro,132949,-166,-0.125,-5074,-3.676,5,112681,Napa,CA,CA,"San Jose-San Francisco-Oakland, CA",112.554
+10540,Albany,metro,132843,259,0.195,4236,3.294,13,103820,Albany,OR,OR,"Portland-Vancouver-Salem, OR-WA",102.1
+41540,Salisbury,metro,131872,480,0.365,3661,2.855,10,55779,Salisbury,MD,MD,"Salisbury-Ocean Pines, MD",95.617
+44420,Staunton-Stuarts Draft,metro,129692,1093,0.85,4259,3.395,3,51675,Staunton,VA,VA,"Harrisonburg-Staunton-Stuarts Draft, VA",91.128
+27780,Johnstown,metro,128968,-937,-0.721,-4496,-3.369,33,56262,Johnstown,PA,PA,"Johnstown-Somerset, PA",85.929
+34100,Morristown,metro,128867,1473,1.156,9694,8.134,6,51202,Morristown,TN,TN,"Knoxville-Morristown-Sevierville, TN",86.364
+14580,Bozeman,metro,128740,1242,0.974,9783,8.224,5,77105,Bozeman,MT,MT,,102.51
+33540,Missoula,metro,128698,1040,0.815,6241,5.096,3,80389,Missoula,MT,MT,,96.445
+21060,Elizabethtown,metro,128666,866,0.678,3099,2.468,7,70581,Elizabethtown,KY,KY,"Louisville/Jefferson County--Elizabethtown, KY-IN",90.572
+48300,Wenatchee-East Wenatchee,metro,128414,1515,1.194,6333,5.188,10,68255,Wenatchee,WA,WA,,103.855
+38340,Pittsfield,metro,128224,-825,-0.639,-802,-0.622,2,55277,Pittsfield,MA,MA,,95.106
+11180,Ames,metro,128090,-55,-0.043,2834,2.263,23,109732,Ames,IA,IA,"Des Moines-West Des Moines-Ames, IA",88.83
+30020,Lawton,metro,127590,450,0.354,938,0.741,14,105408,Lawton,OK,OK,"Lawton-Duncan, OK",85.941
+43420,Sierra Vista-Douglas,metro,126332,1133,0.905,892,0.711,7,77485,Sierra Vista,AZ,AZ,,89.243
+31900,Mansfield,metro,124893,-64,-0.051,-33,-0.026,9,73997,Mansfield,OH,OH,"Mansfield-Ashland-Bucyrus, OH",88.872
+24020,Glens Falls,metro,124373,-710,-0.568,-2660,-2.094,10,34948,Glens Falls,NY,NY,"Albany-Schenectady, NY",94.866
+46300,Twin Falls,metro,123901,1146,0.934,9610,8.408,11,86533,Twin Falls,ID,ID,,92.108
+24140,Goldsboro,metro,122278,1110,0.916,4951,4.22,6,42686,Goldsboro,NC,NC,,88.462
+41660,San Angelo,metro,122065,349,0.287,555,0.457,2,101366,San Angelo,TX,TX,,92.453
+29940,Lawrence,metro,120920,-19,-0.016,2135,1.797,4,108391,Lawrence,KS,KS,"Kansas City-Overland Park-Kansas City, MO-KS",90.243
+22140,Farmington,metro,120340,-185,-0.153,-1325,-1.089,4,60053,Farmington,NM,NM,,87.707
+11020,Altoona,metro,119541,-510,-0.425,-3283,-2.673,9,61506,Altoona,PA,PA,"Altoona-Huntingdon, PA",89.507
+41140,St. Joseph,metro,119170,-19,-0.016,-2301,-1.894,29,88504,St. Joseph,MO,KS|MO,"Kansas City-Overland Park-Kansas City, MO-KS",86.382
+15260,Brunswick-St. Simons,metro,118524,961,0.817,5030,4.432,4,19106,Brunswick,GA,GA,,87.708
+43100,Sheboygan,metro,118047,-44,-0.037,13,0.011,13,82366,Sheboygan,WI,WI,,94.014
+30340,Lewiston-Auburn,metro,116487,887,0.767,5342,4.806,2,64307,Lewiston,ME,ME,"Portland-Lewiston-South Portland, ME",94.736
+11500,Anniston-Oxford,metro,115834,-469,-0.403,-605,-0.52,7,67444,Oxford,AL,AL,,85.949
+31020,Longview-Kelso,metro,114885,1121,0.985,4157,3.754,5,63381,Longview,WA,WA,"Portland-Vancouver-Salem, OR-WA",97.545
+36980,Owensboro,metro,113962,606,0.535,1492,1.327,6,64266,Owensboro,KY,KY,,88.61
+34620,Muncie,metro,113106,354,0.314,1202,1.074,7,84521,Muncie,IN,IN,"Indianapolis-Carmel-Muncie, IN",88.148
+41780,Sandusky,metro,112777,-597,-0.527,-3206,-2.764,15,47927,Sandusky,OH,OH,"Cleveland-Akron-Canton, OH",89.281
+48700,Williamsport,metro,112587,-331,-0.293,-1612,-1.412,10,50263,Williamsport,PA,PA,"Williamsport-Lock Haven, PA",92.35
+48260,Weirton-Steubenville,metro,112468,-671,-0.593,-4415,-3.777,26,64295,Weirton,WV,OH|WV,"Pittsburgh-Weirton-Steubenville, PA-OH-WV",89.024
+48060,Watertown-Fort Drum,metro,111540,-1255,-1.113,-5170,-4.43,20,42554,Watertown,NY,NY,,87.69
+33140,Michigan City-La Porte,metro,111294,-55,-0.049,-1124,-1,11,66220,Michigan City,IN,IN,"Chicago-Naperville, IL-IN-WI",91.682
+42700,Sebring,metro,111122,1230,1.119,9888,9.767,3,25172,Sebring,FL,FL,,92.47
+38240,Pinehurst-Southern Pines,metro,110619,2236,2.063,10873,10.901,11,61003,Pinehurst,NC,NC,"Fayetteville-Lumberton-Pinehurst, NC",88.336
+13220,Beckley,metro,109940,-799,-0.722,-5147,-4.472,14,34720,Beckley,WV,WV,,88.369
+23900,Gettysburg,metro,107594,439,0.41,3740,3.601,13,30933,Gettysburg,PA,PA,"Harrisburg-York-Lebanon, PA",95.379
+28100,Kankakee,metro,105525,-289,-0.273,-2123,-1.972,19,77747,Kankakee,IL,IL,"Chicago-Naperville, IL-IN-WI",96.394
+44940,Sumter,metro,105067,279,0.266,-490,-0.464,3,44146,Sumter,SC,SC,"Columbia-Sumter-Orangeburg, SC",88.02
+24220,Grand Forks,metro,105046,730,0.7,671,0.643,24,85604,Grand Forks,ND,MN|ND,,86.663
+31860,Mankato,metro,104907,468,0.448,1332,1.286,16,86603,Mankato,MN,MN,"Mankato-New Ulm, MN",90.955
+22540,Fond du Lac,metro,104669,-52,-0.05,504,0.484,11,64971,Fond du Lac,WI,WI,,91.643
+27060,Ithaca,metro,104047,-347,-0.332,-1688,-1.596,7,47401,Ithaca,NY,NY,"Ithaca-Cortland, NY",103.317
+23460,Gadsden,metro,103886,411,0.397,463,0.448,11,73655,Gadsden,AL,AL,,85.653
+16940,Cheyenne,metro,102938,1251,1.23,2427,2.415,4,68178,Cheyenne,WY,WY,,96.491
+37140,Paducah,metro,102259,-308,-0.3,-1229,-1.188,15,38572,Paducah,KY,IL|KY,"Paducah-Mayfield, KY-IL",86.084
+13020,Bay City,metro,102123,-309,-0.302,-1740,-1.675,4,38367,Bay City,MI,MI,"Saginaw-Midland-Bay City, MI",91.921
+40660,Rome,metro,101378,180,0.178,2789,2.829,2,40162,Rome,GA,GA,"Atlanta--Athens-Clarke County--Sandy Springs, GA-AL",90.161
+30620,Lima,metro,100881,-71,-0.07,-1323,-1.294,9,51380,Lima,OH,OH,"Lima-Van Wert-Celina, OH",89.669
+47020,Victoria,metro,99864,473,0.476,1529,1.555,2,68208,Victoria,TX,TX,"Victoria-Port Lavaca, TX",89.839
+26300,Hot Springs,metro,99695,-215,-0.215,-479,-0.478,5,40037,Hot Springs,AR,AR,"Hot Springs-Malvern, AR",85.73
+20220,Dubuque,metro,99381,348,0.351,101,0.102,21,80458,Dubuque,IA,IA,,87.328
+19500,Decatur,metro,99300,-649,-0.649,-4695,-4.515,12,86914,Decatur,IL,IL,,88.422
+16020,Cape Girardeau,metro,99215,577,0.585,1702,1.745,17,62790,Cape Girardeau,MO,IL|MO,"Cape Girardeau-Sikeston, MO-IL",86.078
+18700,Corvallis,metro,97728,138,0.141,2550,2.679,4,68873,Corvallis,OR,OR,"Portland-Vancouver-Salem, OR-WA",104.017
+25740,Helena,metro,97153,541,0.56,7326,8.156,5,42171,Helena,MT,MT,,95.675
+21820,Fairbanks-College,metro,93972,-652,-0.689,-1693,-1.77,2,33945,Fairbanks,AK,AK,,103.208
+25980,Hinesville,metro,91870,1840,2.044,10443,12.825,8,47718,Hinesville,GA,GA,"Savannah-Hinesville-Statesboro, GA",93.933
+38540,Pocatello,metro,91591,622,0.684,4568,5.249,7,78603,Pocatello,ID,ID,,88.906
+24420,Grants Pass,metro,87867,-276,-0.313,-220,-0.25,2,41313,Grants Pass,OR,OR,"Medford-Grants Pass, OR",97.76
+37620,Parkersburg-Vienna,metro,87264,-294,-0.336,-2232,-2.494,5,43317,Parkersburg,WV,WV,"Parkersburg-Marietta-Vienna, WV-OH",87.066
+18020,Columbus,metro,85729,787,0.927,3519,4.281,6,55975,Columbus,IN,IN,"Indianapolis-Carmel-Muncie, IN",93.003
+24500,Great Falls,metro,85029,361,0.426,612,0.725,4,61349,Great Falls,MT,MT,,96.845
+29020,Kokomo,metro,83904,-114,-0.136,249,0.298,3,63677,Kokomo,IN,IN,"Indianapolis-Carmel-Muncie, IN",89.648
+33220,Midland,metro,83754,-14,-0.017,257,0.308,3,44819,Midland,MI,MI,"Saginaw-Midland-Bay City, MI",91.921
+16220,Casper,metro,80526,255,0.318,561,0.702,6,69742,Casper,WY,WY,,93.829
+21300,Elmira,metro,80415,-422,-0.522,-3733,-4.436,5,36811,Elmira,NY,NY,"Elmira-Corning, NY",94.398
+24260,Grand Island,metro,78076,-197,-0.252,1041,1.351,17,65222,Grand Island,NE,NE,,86.657
+33500,Minot,metro,75694,45,0.059,-1866,-2.406,30,56515,Minot,ND,ND,,87.028
+30300,Lewiston,metro,65450,18,0.028,1069,1.66,6,44935,Lewiston,ID,ID|WA,,91.16
+47460,Walla Walla,metro,62361,252,0.406,-222,-0.355,4,45534,Walla Walla,WA,WA,"Kennewick-Richland-Walla Walla, WA",98.519
+21420,Enid,metro,61779,-265,-0.427,-1068,-1.699,14,55748,Enid,OK,OK,,84.269
+20580,Eagle Pass,metro,58823,243,0.415,936,1.617,1,28926,Eagle Pass,TX,TX,,83.805
+16180,Carson City,metro,58571,271,0.465,-72,-0.123,1,58571,Carson City,NV,NV,"Reno-Carson City-Gardnerville Ranchos, NV-CA",98.13
