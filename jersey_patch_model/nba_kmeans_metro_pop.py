@@ -6,21 +6,51 @@ Team Strength = z(win_pct) + z(all_star_count)
 Exposure      = z(impressions_millions) + z(metro_pop_millions) + z(national_tv_games)
 """
 
+import os
 import sys
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from sklearn.preprocessing import StandardScaler
 from scipy.stats import pearsonr, spearmanr
 
-try:
-    from adjustText import adjust_text
-    HAVE_ADJUSTTEXT = True
-except ImportError:
-    HAVE_ADJUSTTEXT = False
+LOGO_DIR = "logos"
+LOGO_FILES = {
+    "OKC Thunder": "nba-oklahoma-city-thunder-logo-480x480.png",
+    "San Antonio Spurs": "nba-san-antonio-spurs-logo-480x480.png",
+    "Detroit Pistons": "nba-detroit-pistons-logo-480x480.png",
+    "Boston Celtics": "nba-boston-celtics-logo-480x480.png",
+    "Denver Nuggets": "nba-denver-nuggets-logo-2018-480x480.png",
+    "LA Lakers": "nba-los-angeles-lakers-logo-480x480.png",
+    "New York Knicks": "nba-new-york-knicks-logo-480x480.png",
+    "Cleveland Cavaliers": "Clevelan-Cavaliers-logo-2022-480x480.png",
+    "Houston Rockets": "nba-houston-rockets-logo-2020-300x300.png",
+    "Minnesota Timberwolves": "nba-minnesota-timberwolves-logo-480x480.png",
+    "Atlanta Hawks": "nba-atlanta-hawks-logo-480x480.png",
+    "Toronto Raptors": "nba-toronto-raptors-logo-2020-480x480.png",
+    "Philadelphia 76ers": "nba-philadelphia-76ers-logo-480x480.png",
+    "Orlando Magic": "Orlando-Magic-logo-2025-480x480.png",
+    "Phoenix Suns": "nba-phoenix-suns-logo-480x480.png",
+    "Charlotte Hornets": "nba-charlotte-hornets-logo-480x480.png",
+    "Miami Heat": "nba-miami-heat-logo-480x480.png",
+    "Portland Trail Blazers": "nba-portland-trail-blazers-logo-480x480.png",
+    "LA Clippers": "NBA-LA-Clippers-logo-2024-480x480.png",
+    "Golden State Warriors": "nba-golden-state-warriors-logo-2020-480x480.png",
+    "Milwaukee Bucks": "nba-milwaukee-bucks-logo-480x480.png",
+    "Chicago Bulls": "nba-chicago-bulls-logo-480x480.png",
+    "New Orleans Pelicans": "nba-new-orleans-pelicans-logo-480x480.png",
+    "Dallas Mavericks": "nba-dallas-mavericks-logo-480x480.png",
+    "Memphis Grizzlies": "nba-memphis-grizzlies-logo-480x480.png",
+    "Sacramento Kings": "nba-sacramento-kings-logo-480x480.png",
+    "Utah Jazz": "utah-jazz-logo-2022-480x480.png",
+    "Brooklyn Nets": "nba-brooklyn-nets-logo-480x480.png",
+    "Indiana Pacers": "nba-indiana-pacers-logo-480x480.png",
+    "Washington Wizards": "nba-washington-wizards-logo-480x480.png",
+}
 
 pd.set_option("display.width", 140)
 
@@ -357,38 +387,128 @@ print(f"\n{'metro_pop' if 'metro_pop' in dominant else dominant} has the highest
 section("STEP 6 - Visualization")
 
 DPI = 200
+TARGET_LOGO_PX = 55   # on-canvas logo diameter in actual screen pixels
+DISC_PX = 75          # cluster-color disc behind each logo
+SEPARATION_PX = 85    # minimum center-to-center spacing enforced between any two logos
+
+def px_to_pt(px):
+    """OffsetImage's zoom and scatter's s are both in points (1pt = dpi/72 px
+    at this figure's dpi) -- convert so 'pixels' means actual screen pixels."""
+    return px * 72 / DPI
+
 cluster_colors = plt.get_cmap("tab10", CHOSEN_K)
 
 fig, ax = plt.subplots(figsize=(16, 9), dpi=DPI, facecolor="white")
 ax.set_facecolor("white")
 
+x_pad, y_pad = 0.6, 0.6
+ax.set_xlim(df["team_strength"].min() - x_pad, df["team_strength"].max() + x_pad)
+ax.set_ylim(df["exposure"].min() - y_pad, df["exposure"].max() + y_pad)
+fig.subplots_adjust(top=0.85, bottom=0.08, left=0.06, right=0.97)
+
+# ---------------------------------------------------------------------------
+# Overlap avoidance: group any logos within SEPARATION_PX of each other
+# (union-find over the proximity graph) and arrange each group on a small
+# circle around their shared true centroid, radius chosen so every member is
+# guaranteed SEPARATION_PX from its neighbors regardless of group size. A
+# pairwise-relaxation cleanup pass then resolves any remaining cross-group
+# close calls. True data positions are untouched -- only the drawn position
+# shifts, and a thin leader line marks any real nudge.
+# ---------------------------------------------------------------------------
+teams = df.index.tolist()
+n = len(teams)
+true_px = ax.transData.transform(df[["team_strength", "exposure"]].values).astype(float)
+
+parent = list(range(n))
+
+def find(i):
+    while parent[i] != i:
+        parent[i] = parent[parent[i]]
+        i = parent[i]
+    return i
+
+def union(i, j):
+    ri, rj = find(i), find(j)
+    if ri != rj:
+        parent[ri] = rj
+
+for i in range(n):
+    for j in range(i + 1, n):
+        if np.hypot(*(true_px[i] - true_px[j])) < SEPARATION_PX:
+            union(i, j)
+
+groups = {}
+for i in range(n):
+    groups.setdefault(find(i), []).append(i)
+
+plot_px = true_px.copy()
+for members in groups.values():
+    if len(members) == 1:
+        continue
+    centroid = true_px[members].mean(axis=0)
+    radius = SEPARATION_PX / (2 * np.sin(np.pi / len(members)))
+    for k, idx in enumerate(members):
+        angle = 2 * np.pi * k / len(members) + np.pi / 2
+        plot_px[idx] = centroid + radius * np.array([np.cos(angle), np.sin(angle)])
+
+rng = np.random.default_rng(42)
+for _ in range(300):
+    moved = False
+    for i in range(n):
+        for j in range(i + 1, n):
+            dx = plot_px[j, 0] - plot_px[i, 0]
+            dy = plot_px[j, 1] - plot_px[i, 1]
+            dist = np.hypot(dx, dy)
+            if dist < 1e-6:
+                angle = rng.uniform(0, 2 * np.pi)
+                dx, dy, dist = np.cos(angle), np.sin(angle), 1.0
+            if dist < SEPARATION_PX:
+                push = (SEPARATION_PX - dist) / 2
+                ux, uy = dx / dist, dy / dist
+                plot_px[i] -= [ux * push, uy * push]
+                plot_px[j] += [ux * push, uy * push]
+                moved = True
+    if not moved:
+        break
+
+plot_data = ax.transData.inverted().transform(plot_px)
+df["plot_x"] = plot_data[:, 0]
+df["plot_y"] = plot_data[:, 1]
+nudged = np.hypot(plot_px[:, 0] - true_px[:, 0], plot_px[:, 1] - true_px[:, 1]) > 2
+
+for team, was_nudged in zip(teams, nudged):
+    if was_nudged:
+        row = df.loc[team]
+        ax.plot([row["team_strength"], row["plot_x"]], [row["exposure"], row["plot_y"]],
+                color="#898781", linewidth=0.6, linestyle="-", alpha=0.7, zorder=2)
+
+if nudged.any():
+    print(f"Nudged {int(nudged.sum())} overlapping logo(s) to stay visible "
+          f"(thin leader line marks the true position): {', '.join(np.array(teams)[nudged])}")
+
+# Solid cluster-color disc behind each logo, then the logo on top
 for cid in range(CHOSEN_K):
     sub = df[df["cluster"] == cid]
-    ax.scatter(sub["team_strength"], sub["exposure"], s=90, color=cluster_colors(cid),
-               edgecolor="white", linewidth=0.8, alpha=0.9,
+    ax.scatter(sub["plot_x"], sub["plot_y"], s=px_to_pt(DISC_PX) ** 2, color=cluster_colors(cid),
+               edgecolor="white", linewidth=1.2,
                label=f"Cluster {cid}: {cluster_names[cid]} (n={len(sub)})", zorder=3)
 
-texts = []
-short_names = {
-    "OKC Thunder": "OKC", "San Antonio Spurs": "SAS", "Detroit Pistons": "DET",
-    "Boston Celtics": "BOS", "Denver Nuggets": "DEN", "LA Lakers": "LAL", "New York Knicks": "NYK",
-    "Cleveland Cavaliers": "CLE", "Houston Rockets": "HOU", "Minnesota Timberwolves": "MIN",
-    "Atlanta Hawks": "ATL", "Toronto Raptors": "TOR", "Philadelphia 76ers": "PHI", "Orlando Magic": "ORL",
-    "Phoenix Suns": "PHX", "Charlotte Hornets": "CHA", "Miami Heat": "MIA", "Portland Trail Blazers": "POR",
-    "LA Clippers": "LAC", "Golden State Warriors": "GSW", "Milwaukee Bucks": "MIL", "Chicago Bulls": "CHI",
-    "New Orleans Pelicans": "NOP", "Dallas Mavericks": "DAL", "Memphis Grizzlies": "MEM",
-    "Sacramento Kings": "SAC", "Utah Jazz": "UTA", "Brooklyn Nets": "BKN", "Indiana Pacers": "IND",
-    "Washington Wizards": "WAS",
-}
+missing_logos = []
 for team, row in df.iterrows():
-    t = ax.text(row["team_strength"], row["exposure"], short_names[team], fontsize=8.5, color="#0b0b0b", zorder=4)
-    texts.append(t)
+    logo_filename = LOGO_FILES.get(team)
+    logo_path = os.path.join(LOGO_DIR, logo_filename) if logo_filename else None
+    if logo_path and os.path.exists(logo_path):
+        img = plt.imread(logo_path)
+        zoom = px_to_pt(TARGET_LOGO_PX) / img.shape[1]
+        imagebox = OffsetImage(img, zoom=zoom)
+        ab = AnnotationBbox(imagebox, (row["plot_x"], row["plot_y"]), frameon=False, pad=0, zorder=4)
+        ax.add_artist(ab)
+    else:
+        missing_logos.append(team)
 
-if HAVE_ADJUSTTEXT:
-    adjust_text(texts, ax=ax, arrowprops=dict(arrowstyle="-", color="#898781", lw=0.6),
-                expand=(1.3, 1.6))
-else:
-    print("adjustText not available -- labels placed at raw coordinates, may overlap in dense areas.")
+if missing_logos:
+    print(f"No logo file found for {len(missing_logos)} team(s), left as a plain colored disc: "
+          f"{', '.join(missing_logos)}")
 
 ax.axhline(0, color="#898781", linewidth=0.9, zorder=1)
 ax.axvline(0, color="#898781", linewidth=0.9, zorder=1)
@@ -403,7 +523,6 @@ ax.set_xlabel("Team Strength Index", fontsize=11.5, color="#0b0b0b")
 ax.set_ylabel("Exposure Index", fontsize=11.5, color="#0b0b0b")
 ax.legend(frameon=False, loc="upper left", fontsize=9.5)
 
-fig.subplots_adjust(top=0.85, bottom=0.08, left=0.06, right=0.97)
 fig.text(0.06, 0.965, "NBA Patch Value: K-Means Team Clusters", fontsize=20, fontweight="bold",
           color="#0b0b0b", va="top")
 fig.text(0.06, 0.915,
