@@ -191,13 +191,15 @@ print(f"\nBest silhouette: k={best_sil_k} ({silhouettes[best_sil_k]:.3f}). "
       f"Steepest inertia drop: k={elbow_k} (inertia fell by {inertia_drops[elbow_k]:.1f} going into it).")
 
 if best_sil_k == elbow_k:
-    CHOSEN_K = best_sil_k
-    print(f"Elbow and silhouette agree on k={CHOSEN_K}.")
+    print(f"Elbow and silhouette agree on k={best_sil_k}.")
 else:
-    CHOSEN_K = best_sil_k
-    print(f"Elbow and silhouette DISAGREE (elbow points to k={elbow_k}, silhouette to k={best_sil_k}) -- "
-          f"going with the silhouette-best k={CHOSEN_K} since it directly measures cluster separation, "
-          f"but this is a judgment call, not a clean consensus.")
+    print(f"Elbow and silhouette DISAGREE (elbow points to k={elbow_k}, silhouette to k={best_sil_k}).")
+
+CHOSEN_K = 4
+print(f"Chosen k = {CHOSEN_K} (set explicitly, for continuity with the previous 4-cluster model). "
+      f"Neither metric actually picks k=4 on its own here: silhouette peaks at k={best_sil_k} "
+      f"({silhouettes[best_sil_k]:.3f} vs. k=4's {silhouettes[4]:.3f}), and the steepest inertia "
+      f"drop is at k={elbow_k}, not 4 -- noted plainly rather than overstating the fit.")
 
 kmeans = KMeans(n_clusters=CHOSEN_K, n_init=20, random_state=42)
 df["cluster"] = kmeans.fit_predict(X)
@@ -212,20 +214,38 @@ cluster_summary = df.groupby("cluster")[["team_strength", "exposure"]].mean()
 print("Centroids:")
 print(cluster_summary.round(3).to_string())
 
-def suggest_name(strength, exposure):
-    s_tag = "Strong" if strength > 0.3 else ("Weak" if strength < -0.3 else "Average")
-    e_tag = "High-Exposure" if exposure > 0.3 else ("Low-Exposure" if exposure < -0.3 else "Mid-Exposure")
-    return f"{s_tag}, {e_tag}"
+# Rank-based naming so names stay distinct regardless of k: each cluster's
+# label comes from its RANK on each axis (relative to the other clusters),
+# not a fixed absolute threshold -- fixed thresholds collided for k=4 here
+# (two low-exposure clusters both landed under the same "Low-Exposure" cutoff).
+STRENGTH_VOCAB = ["Strongest", "Stronger", "Strong", "Average", "Weak", "Weaker", "Weakest"]
+EXPOSURE_VOCAB = ["Highest-Exposure", "Higher-Exposure", "High-Exposure", "Mid-Exposure",
+                  "Low-Exposure", "Lower-Exposure", "Lowest-Exposure"]
+
+def rank_labels(k, vocab):
+    if k == 1:
+        return [vocab[len(vocab) // 2]]
+    idx = np.round(np.linspace(0, len(vocab) - 1, k)).astype(int)
+    return [vocab[i] for i in idx]
+
+strength_order = cluster_summary["team_strength"].sort_values(ascending=False).index.tolist()
+exposure_order = cluster_summary["exposure"].sort_values(ascending=False).index.tolist()
+strength_label_for = dict(zip(strength_order, rank_labels(CHOSEN_K, STRENGTH_VOCAB)))
+exposure_label_for = dict(zip(exposure_order, rank_labels(CHOSEN_K, EXPOSURE_VOCAB)))
 
 cluster_names = {}
 for cid, row in cluster_summary.iterrows():
-    name = suggest_name(row["team_strength"], row["exposure"])
+    name = f"{strength_label_for[cid]}, {exposure_label_for[cid]}"
     cluster_names[cid] = name
     members = sorted(df[df["cluster"] == cid].index.tolist())
     print(f"\nCluster {cid} - suggested name: \"{name}\"  (n={len(members)}, "
           f"centroid strength={row['team_strength']:.2f}, exposure={row['exposure']:.2f})")
     for m in members:
         print(f"  - {m}")
+
+if len(set(cluster_names.values())) < len(cluster_names):
+    print("\nWARNING: two clusters still produced the same suggested name -- "
+          "check cluster_summary above and name them manually for the poster.")
 
 
 # ---------------------------------------------------------------------------
