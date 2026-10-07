@@ -50,17 +50,21 @@ data = {
 }
 
 CLUSTERS = [
+    # Membership updated to match the metro-population K-means model
+    # (nba_kmeans_metro_pop.py, k=4): LA Clippers moved Middle of the Pack ->
+    # Contenders, Brooklyn Nets moved Off the Radar -> Middle of the Pack,
+    # New York Knicks moved Contenders -> Household Names.
     ("Household Names", "#B23A48",
-     ["LA Lakers", "Golden State Warriors"]),
+     ["LA Lakers", "Golden State Warriors", "New York Knicks"]),
     ("Contenders", "#1F9FB5",
      ["Houston Rockets", "San Antonio Spurs", "Boston Celtics", "Cleveland Cavaliers",
-      "OKC Thunder", "New York Knicks", "Minnesota Timberwolves", "Denver Nuggets", "Detroit Pistons"]),
+      "OKC Thunder", "Minnesota Timberwolves", "Denver Nuggets", "Detroit Pistons", "LA Clippers"]),
     ("Middle of the Pack", "#2F6FA8",
-     ["Dallas Mavericks", "Chicago Bulls", "LA Clippers", "Miami Heat",
+     ["Dallas Mavericks", "Chicago Bulls", "Miami Heat",
       "Milwaukee Bucks", "Philadelphia 76ers", "Phoenix Suns", "Orlando Magic", "Atlanta Hawks",
-      "Portland Trail Blazers", "Toronto Raptors"]),
+      "Portland Trail Blazers", "Toronto Raptors", "Brooklyn Nets"]),
     ("Off the Radar", "#C46FB5",
-     ["Indiana Pacers", "Sacramento Kings", "Memphis Grizzlies", "Brooklyn Nets",
+     ["Indiana Pacers", "Sacramento Kings", "Memphis Grizzlies",
       "Charlotte Hornets", "New Orleans Pelicans", "Washington Wizards", "Utah Jazz"]),
 ]
 
