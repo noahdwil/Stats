@@ -121,7 +121,7 @@ for team, cluster_name, color in ordered_teams:
     yi = y_positions[team]
     low, high = exposure * RATIO_LOW, exposure * RATIO_HIGH
 
-    ax.plot([low, high], [yi, yi], color=color, alpha=0.35, linewidth=14,
+    ax.plot([low, high], [yi, yi], color=color, alpha=0.6, linewidth=5,
             solid_capstyle="round", zorder=2)
 
     mult = cluster_multiplier[cluster_name]
